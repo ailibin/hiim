@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!--<string name="weixinId">wx1d4b02ddbd1986ad</string>-->
+    <!--<string name="weixinSecret">d961600417ec800a5e15a29873de7e70</string>-->
+    <string name="partnerid">1487456882</string>
+    <string name="im_account_type">15208</string>
+    <string name="im_sdk_appid">1400039783</string>
+
+    <!--测试的-->
+    <string name="weixinId_kingcat">wx5ec22d12aff814f2</string>
+    <string name="weixinSecret_kingcat">82ee94e23996c23f6f638fd277057560</string>
+    <!--<string name="umeng_key">59ae23bc8f4a9d22d1001122</string>-->
+
+    <!--线上正式环境的参数-->
+    <string name="weixinId">wx276fc3faf65dffe8</string>
+    <string name="weixinSecret">6c85a410999fb9c2693b44e3e8d7a8b8</string>
+    <string name="qq_id">101488890</string>
+    <string name="qq_key">7b4c911bf41d2e4ee513c3dbaee1b663</string>
+    <string name="umeng_key">5b35cd3bb27b0a34180001f3</string>
+    <string name="umeng_message_secret">09c1eb01ea3a961998cd6c5f78b399e5</string>
+    <string name="umeng_master_secret">bavy4uvjgmolxvegxp3vlawvpouymfqi</string>
+
+    <!--正式的高德地图测试账号-->
+    <string name="amap_key">85b9d66a163237121bc27ad82723d9eb</string>
+
+
+</resources>

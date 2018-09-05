@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="center"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/tv_dialog_photo"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@color/white"
+        android:clickable="true"
+        android:gravity="center"
+        android:text="从相册选取"
+        android:textColor="@color/black2"
+        android:textSize="18sp" />
+
+    <View
+        android:id="@+id/view_dialog_line"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/common_gray_divider_color" />
+
+    <TextView
+        android:id="@+id/tv_dialog_camera"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@color/white"
+        android:clickable="true"
+        android:gravity="center"
+        android:text="拍照"
+        android:textColor="@color/black2"
+        android:textSize="18sp" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="5dp"
+        android:background="@color/common_gray_divider_color" />
+
+    <TextView
+        android:id="@+id/tv_dialog_cancel"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@color/white"
+        android:clickable="true"
+        android:gravity="center"
+        android:text="取消"
+        android:textColor="@color/black2"
+        android:textSize="18sp" />
+
+</LinearLayout>

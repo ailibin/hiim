@@ -1,0 +1,35 @@
+<resources>
+    <string name="app_name">我來煮</string>
+    <string name="no_more">沒有更多數據</string>
+    <string name="cancel">取消</string>
+    <string name="confirm">確認</string>
+    <string name="no_data">暫無數據</string>
+    <string name="no_net">網絡不給力哦</string>
+    <string name="hint_net_error_set">網絡連接異常，請檢查您的網絡連接</string>
+    <string name="hint_net_error_retry">網絡連接異常，請稍後重試</string>
+    <string name="retry">重試</string>
+    <string name="set_now">馬上設置</string>
+    <string name="net_desc">網絡說明</string>
+    <string name="hint_net_desc_1">您的設備可能未連接移動網絡，或wi-fi網絡</string>
+    <string name="hint_net_desc_set_wifi_label">wi-fi網絡請參照下面方法：</string>
+    <string name="hint_net_desc_wifi_set">在設備的【設置>WLAN】請選擇壹個wi-fi熱點連接。</string>
+    <string name="hint_net_desc_set_mobile_network_label">移動數據請參照下面方法：</string>
+    <string name="hint_net_desc_set_mobile_network">在設備的【設置>移動網絡】中啟動數據網絡。</string>
+    <string name="hint_net_desc_set_permission_label">檢查網絡權限是否打開：</string>
+    <string name="hint_net_desc_set_permission">在設備的應用管理中查看“%1$s”，是否已經開啟了使用網絡的權限。</string>
+    <string-array name="tables">
+        <item>凈菜</item>
+        <item>美食體驗</item>
+        <item>我來煮</item>
+        <item>我的</item>
+    </string-array>
+    <string name="table_vegetables">凈菜</string>
+    <string name="table_experience">美食體驗</string>
+    <string name="table_cook">我來煮</string>
+    <string name="table_mine">我的</string>
+    <string name="password">密碼</string>
+    <string name="mobile">手機號</string>
+    <string name="register">註冊</string>
+    <string name="forget_password">忘記密碼</string>
+    <string name="login">登錄</string>
+</resources>

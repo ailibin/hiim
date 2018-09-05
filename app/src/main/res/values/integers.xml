@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <integer name="pickerview_center_text_size">18</integer>
+    <integer name="pickerview_xoffset">40</integer>
+</resources>

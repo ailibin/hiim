@@ -1,0 +1,29 @@
+<resources>
+    <string name="app_name">嗨APP</string>
+    <string name="no_more">没有更多数据</string>
+    <string name="cancel">取消</string>
+    <string name="confirm">确认</string>
+    <string name="no_data">暂无数据</string>
+    <string name="no_net">网络不给力哦</string>
+    <string name="hint_net_error_set">网络连接异常，请检查您的网络连接</string>
+    <string name="hint_net_error_retry">网络连接异常，请稍后重试</string>
+    <string name="retry">重试</string>
+    <string name="set_now">马上设置</string>
+    <string name="net_desc">网络说明</string>
+    <string name="hint_net_desc_1">您的设备可能未连接移动网络，或wi-fi网络</string>
+    <string name="hint_net_desc_set_wifi_label">wi-fi网络请参照下面方法：</string>
+    <string name="hint_net_desc_wifi_set">在设备的【设置>WLAN】请选择一个wi-fi热点连接。</string>
+    <string name="hint_net_desc_set_mobile_network_label">移动数据请参照下面方法：</string>
+    <string name="hint_net_desc_set_mobile_network">在设备的【设置>移动网络】中启动数据网络。</string>
+    <string name="hint_net_desc_set_permission_label">检查网络权限是否打开：</string>
+    <string name="hint_net_desc_set_permission">在设备的应用管理中查看“%1$s”，是否已经开启了使用网络的权限。</string>
+    <string name="password">密码</string>
+    <string name="mobile">手机号</string>
+    <string name="register">注册</string>
+    <string name="forget_password">忘记密码</string>
+    <string name="login">登录</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+</resources>

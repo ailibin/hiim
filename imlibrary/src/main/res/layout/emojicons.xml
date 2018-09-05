@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+  ~ Copyright 2014 Hieu Rocker
+  ~
+  ~ Licensed under the Apache License, Version 2.0 (the "License");
+  ~ you may not use this file except in compliance with the License.
+  ~ You may obtain a copy of the License at
+  ~
+  ~    http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License.
+  -->
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+    android:background="#f9f9f9"
+    android:layout_width="match_parent"
+    android:layout_height="196dp">
+    <!--android:background="#f9f9f9"-->
+
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/emojis_pager"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/ll_emoji_circle"
+         />
+
+    <LinearLayout
+        android:id="@+id/ll_emoji_circle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentBottom="true"
+        android:orientation="horizontal">
+        <!--<View-->
+            <!--android:layout_width="10dp"-->
+            <!--android:layout_height="10dp"-->
+            <!--android:layout_marginLeft="8dp"-->
+            <!--android:layout_marginRight="8dp"-->
+            <!--android:background="#aaa"/>-->
+        <!--<View-->
+            <!--android:layout_width="20dp"-->
+            <!--android:layout_height="20dp"-->
+            <!--android:layout_marginLeft="8dp"-->
+            <!--android:layout_marginRight="8dp"-->
+            <!--android:background="#aaa"/>-->
+    </LinearLayout>
+    <!--<View
+        android:id="@+id/line"
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:layout_below="@id/emojis_pager"
+        android:visibility="gone"
+        android:background="@color/horizontal_divider" />
+    <LinearLayout
+        android:id="@+id/emojis_tab"
+        android:layout_width="match_parent"
+        android:layout_height="50dip"
+        android:orientation="horizontal"
+        android:visibility="gone"
+        android:layout_below="@id/line">
+        <ImageButton
+            android:background="@drawable/emoji_tab_selector"
+            android:layout_width="0dip"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:scaleType="center"
+            android:id="@+id/emojis_tab_0_recents"
+            android:visibility="gone"
+            />
+        <View
+            android:layout_width="1px"
+            android:layout_height="match_parent"
+            android:background="@color/horizontal_vertical" />
+
+        <ImageButton
+            android:background="@drawable/emoji_tab_selector"
+            android:layout_width="0dip"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:scaleType="center"
+            android:src="@drawable/emoji_1f604"
+            android:id="@+id/emojis_tab_1_people"
+           />
+
+        <View
+            android:layout_width="1px"
+            android:layout_height="match_parent"
+            android:background="@color/horizontal_vertical" />
+
+
+        <ImageButton
+            android:background="@drawable/emoji_tab_selector"
+            android:layout_width="0dip"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:scaleType="center"
+            android:id="@+id/emojis_tab_3_objects"
+            android:src="@drawable/emoji_1f3e0" />
+
+        <View
+            android:layout_width="1px"
+            android:layout_height="match_parent"
+            android:background="@color/horizontal_vertical" />
+
+        <ImageButton
+            android:background="@drawable/emoji_tab_selector"
+            android:layout_width="0dip"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:scaleType="center"
+            android:visibility="visible"
+            android:id="@+id/emojis_tab_4_cars"
+            android:src="@drawable/emoji_1f38d" />
+
+        <View
+            android:layout_width="1px"
+            android:layout_height="match_parent"
+            android:visibility="visible"
+            android:background="@color/horizontal_vertical" />
+
+        <ImageButton
+            android:background="@drawable/emoji_tab_selector"
+            android:layout_width="0dip"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:scaleType="center"
+            android:id="@+id/emojis_tab_2_nature"
+            android:src="@drawable/emoji_1f436"
+           />
+        <ImageButton
+            android:background="@drawable/emoji_tab_selector"
+            android:layout_width="0dip"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:scaleType="center"
+            android:visibility="invisible"
+            android:id="@+id/emojis_tab_5_punctuation"
+            android:src="@drawable/ic_emoji_symbols_light" />
+
+        <View
+            android:layout_width="1px"
+            android:layout_height="match_parent"
+            android:visibility="invisible"
+            android:background="@color/horizontal_vertical" />
+
+        <ImageButton
+            android:background="@drawable/emoji_tab_selector"
+            android:layout_width="0dip"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:id="@+id/emojis_backspace"
+            android:src="@drawable/orca_emoji_backspace_back_normal" />
+    </LinearLayout>-->
+</RelativeLayout>

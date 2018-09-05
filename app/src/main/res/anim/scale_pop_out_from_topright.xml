@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?><!-- 品牌页和商品详情页的底部弹窗的出场动画 -->
+<set xmlns:android="http://schemas.android.com/apk/res/android">
+    <scale
+        android:duration="320"
+        android:fillAfter="false"
+        android:fromXScale="1.0"
+        android:fromYScale="1.0"
+        android:interpolator="@android:anim/accelerate_decelerate_interpolator"
+        android:pivotX="100%"
+        android:pivotY="0%"
+        android:toXScale="0.0"
+        android:toYScale="0.0" />
+</set> 

@@ -1,0 +1,47 @@
+package com.aiitec.hiim.im.model;
+
+
+import com.tencent.imsdk.TIMMessage;
+
+/**
+ * 消息工厂
+ *
+ * @author ailibin
+ */
+public class MessageFactory {
+
+    private MessageFactory() {
+    }
+
+
+    /**
+     * 消息工厂方法
+     */
+    public static Message getMessage(TIMMessage message) {
+        switch (message.getElement(0).getType()) {
+            case Text:
+            case Face:
+                return new TextMessage(message);
+            case Image:
+                return new ImageMessage(message);
+            case Sound:
+                return new VoiceMessage(message);
+            case Video:
+                return new VideoMessage(message);
+            case GroupTips:
+                return new GroupTipMessage(message);
+            case File:
+                return new FileMessage(message);
+            case Custom:
+                return new CustomMessage(message);
+            case Location:
+                return new LocationMessage(message);
+//            case UGC:
+//                return new UGCMessage(message);
+            default:
+                return null;
+        }
+    }
+
+
+}

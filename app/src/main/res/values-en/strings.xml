@@ -1,0 +1,37 @@
+<resources>
+    <string name="app_name">letMeCook</string>
+    <string name="no_more">No more data</string>
+    <string name="cancel">cancel</string>
+    <string name="confirm">confirm</string>
+    <string name="no_data">Temporarily no data</string>
+    <string name="no_net">The Internet do not work</string>
+    <string name="hint_net_error_set">Network connection exception, please check your network connection.</string>
+    <string name="hint_net_error_retry">Network connection exception, please try again later.</string>
+    <string name="retry">retry</string>
+    <string name="set_now">set now</string>
+    <string name="net_desc">Network that</string>
+    <string name="hint_net_desc_1">Your device may not be connected to a mobile network, or a wi-fi network.</string>
+    <string name="hint_net_desc_set_wifi_label">For wi-fi network, please refer to the following method:</string>
+    <string name="hint_net_desc_wifi_set">Please select a wi-fi hotspot connection on the device [setting >WLAN].</string>
+    <string name="hint_net_desc_set_mobile_network_label">For mobile data, please refer to the following method:</string>
+    <string name="hint_net_desc_set_mobile_network">Start the data network in the device \&#39; setting \&#62; mobile network.</string>
+    <string name="hint_net_desc_set_permission_label">Check whether network permissions are opened:</string>
+    <string name="hint_net_desc_set_permission">Check the “%1$s” in the application management of the device, and whether you have opened the permission to use the network.</string>
+
+    <string-array name="tables">
+        <item>Vegetables</item>
+        <item>Experience</item>
+        <item>Cook</item>
+        <item>Mine</item>
+    </string-array>
+    <string name="table_vegetables">Vegetables</string>
+    <string name="table_experience">Experience</string>
+    <string name="table_cook">Cook</string>
+    <string name="table_mine">Mine</string>
+    <string name="password">password</string>
+    <string name="mobile">mobile</string>
+    <string name="register">register</string>
+    <string name="forget_password">forget_password</string>
+    <string name="login">login</string>
+
+</resources>

@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/ll_no_net"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg_all"
+    android:gravity="center_horizontal"
+    android:orientation="vertical"
+    android:visibility="gone">
+
+    <TextView
+        android:id="@+id/tv_net_guide"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#fdfae1"
+        android:drawableLeft="@drawable/ic_net_warnning"
+        android:drawablePadding="8dp"
+        android:drawableRight="@drawable/common_btn_arrow_gray"
+        android:paddingBottom="12dp"
+        android:paddingLeft="12dp"
+        android:paddingRight="12dp"
+        android:paddingTop="12dp"
+        android:text="@string/hint_net_error_set"
+        android:textColor="@color/red"
+        android:textSize="14sp" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:src="@drawable/ic_net_error" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:paddingBottom="12dp"
+        android:paddingLeft="12dp"
+        android:paddingRight="12dp"
+        android:paddingTop="12dp"
+        android:text="@string/hint_net_error_retry"
+        android:textColor="@color/black6"
+        android:textSize="14sp" />
+
+    <Button
+        android:id="@+id/btn_retry"
+        style="?android:attr/borderlessButtonStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:background="@drawable/btn_retry_selector"
+        android:minHeight="40dp"
+        android:paddingLeft="40dp"
+        android:paddingRight="40dp"
+        android:text="@string/retry" />
+
+</LinearLayout>

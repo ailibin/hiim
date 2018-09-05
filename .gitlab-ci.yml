@@ -1,0 +1,31 @@
+# Danny 2018-07-04 +1
+
+variables:
+  G_LARAVEL_INIT: 'true'
+
+stages:
+    - deploy
+    - android-auto-build
+    
+job1:
+  stage: deploy
+  only:
+    - develop
+    - test
+  script:
+    - deploy android $CI_PROJECT_NAME $CI_COMMIT_REF_NAME
+    - echo "项目:$CI_PROJECT_NAME, 分支:$CI_COMMIT_REF_NAME, job:$CI_JOB_NAME, success";
+    
+job2:
+  stage: android-auto-build
+  only:
+    - develop
+    - test
+  variables: 
+    B_AUTO_BUILD: 'false'
+  script:
+    - android-auto-build android $CI_PROJECT_NAME $CI_COMMIT_REF_NAME $B_AUTO_BUILD app
+    - echo "android-apk-build, B_AUTO_BUILD=$B_AUTO_BUILD";
+
+
+

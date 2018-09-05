@@ -1,0 +1,219 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:focusable="true"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/systemMessage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="10dp"
+        android:textColor="@color/text_gray2"
+        android:textSize="12sp"
+        android:visibility="gone" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingBottom="10dp"
+        android:paddingTop="10dp">
+
+        <RelativeLayout
+            android:id="@+id/leftPanel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="12dp">
+
+            <ImageView
+                android:id="@+id/leftAvatar"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:layout_alignParentLeft="true"
+                android:src="@drawable/my_icon_default_avatar2x" />
+
+
+            <include
+                android:id="@+id/include_left_location_container"
+                layout="@layout/item_layout_location"
+                android:layout_width="210dp"
+                android:layout_height="125dp"
+                android:layout_marginLeft="10dp"
+                android:layout_toRightOf="@+id/leftAvatar"
+                android:visibility="gone" />
+
+            <TextView
+                android:id="@+id/sender"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="3dp"
+                android:layout_marginLeft="6dp"
+                android:text="name"
+                android:textColor="@color/text_gray1"
+                android:textSize="12sp"
+                android:visibility="gone" />
+
+
+            <RelativeLayout
+                android:id="@+id/leftMessage"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="8dp"
+                android:layout_toRightOf="@id/leftAvatar"
+                android:background="@drawable/chat_img_bg_talk_gray2x"
+                android:clickable="true"
+                android:gravity="center"
+                android:longClickable="true"
+                android:paddingBottom="5dp"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:paddingTop="5dp" />
+
+
+            <ImageView
+                android:id="@+id/iv_voice_unread"
+                android:layout_width="15dp"
+                android:layout_height="15dp"
+                android:layout_alignBottom="@id/leftMessage"
+                android:layout_alignTop="@id/leftMessage"
+                android:layout_toRightOf="@+id/tv_left_duration"
+                android:gravity="center_vertical"
+                android:paddingLeft="5dp"
+                android:src="@drawable/im_point1"
+                android:visibility="gone" />
+
+            <TextView
+                android:id="@+id/tv_left_duration"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBottom="@id/leftMessage"
+                android:layout_alignTop="@id/leftMessage"
+                android:layout_toRightOf="@id/leftMessage"
+                android:gravity="center_vertical"
+                android:paddingLeft="8dp"
+                android:text="6555″"
+                android:textColor="@color/black5"
+                android:textSize="16sp"
+                android:visibility="gone" />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/rightPanel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="10dp"
+            android:paddingLeft="52dp">
+
+            <ImageView
+                android:id="@+id/rightAvatar"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:layout_alignParentRight="true"
+                android:src="@drawable/my_icon_default_avatar2x"
+                android:visibility="visible" />
+
+            <include
+                android:id="@+id/include_right_location_container"
+                layout="@layout/item_layout_location"
+                android:layout_width="210dp"
+                android:layout_height="125dp"
+                android:layout_marginRight="10dp"
+                android:layout_toLeftOf="@+id/rightAvatar"
+                android:visibility="gone" />
+
+
+            <RelativeLayout
+                android:id="@+id/rightMessage"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="8dp"
+                android:layout_toLeftOf="@+id/rightAvatar"
+                android:background="@drawable/chat_img_bg_talk_pink2x"
+                android:clickable="true"
+                android:gravity="center"
+                android:longClickable="true"
+                android:paddingBottom="5dp"
+                android:paddingLeft="5dp"
+                android:paddingRight="10dp"
+                android:paddingTop="5dp" />
+
+            <TextView
+                android:id="@+id/rightDesc"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignRight="@id/rightMessage"
+                android:layout_below="@id/rightMessage"
+                android:layout_marginRight="3dp"
+                android:textColor="@color/text_gray1"
+                android:textSize="12sp"
+                android:visibility="gone" />
+
+            <RelativeLayout
+                android:id="@+id/sendStatus"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_toLeftOf="@id/rightMessage"
+                android:paddingRight="8dp">
+
+                <ProgressBar
+                    android:id="@+id/sending"
+                    android:layout_width="15dp"
+                    android:layout_height="15dp"
+                    android:layout_toLeftOf="@+id/tv_right_duration" />
+
+                <TextView
+                    android:id="@+id/tv_right_duration"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:text="6555″"
+                    android:textColor="@color/black5"
+                    android:textSize="16sp"
+                    android:visibility="gone" />
+
+                <ImageView
+                    android:id="@+id/sendError"
+                    android:layout_width="15dp"
+                    android:layout_height="15dp"
+                    android:layout_toLeftOf="@+id/tv_right_duration"
+                    android:src="@drawable/im_ic_error"
+                    android:visibility="visible" />
+
+            </RelativeLayout>
+
+        </RelativeLayout>
+
+
+        <LinearLayout
+            android:id="@+id/ll_item_custom_message"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_marginBottom="8dp"
+            android:layout_marginTop="8dp"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:padding="8dp"
+            android:visibility="gone">
+
+            <TextView
+                android:id="@+id/tv_item_custom_message_content"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="生命的奇迹"
+                android:textColor="@color/black5"
+                android:textSize="12sp" />
+
+        </LinearLayout>
+
+
+    </RelativeLayout>
+
+
+</LinearLayout>

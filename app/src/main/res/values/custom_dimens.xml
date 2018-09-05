@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!--Crop View-->
+    <dimen name="ucrop_padding_crop_frame">16dp</dimen>
+    <dimen name="ucrop_default_crop_grid_stoke_width">1dp</dimen>
+    <dimen name="ucrop_default_crop_frame_stoke_width">1dp</dimen>
+    <dimen name="sure_btn_padding_10">10dp</dimen>
+    <dimen name="sure_btn_padding_15">15dp</dimen>
+    <dimen name="sure_btn_corner">5dp</dimen>
+    <dimen name="sure_text_size">15sp</dimen>
+
+    <dimen name="font_size_12">12sp</dimen>
+    <dimen name="font_size_18">18sp</dimen>
+    <dimen name="height_20">20dp</dimen>
+    <dimen name="height_25">25dp</dimen>
+    <dimen name="height_50">50dp</dimen>
+    <dimen name="folder_cover_size">72dp</dimen>
+
+    <!-- pickView选项文字大小 -->
+    <dimen name="pickerview_text_size">20sp</dimen>
+
+</resources>

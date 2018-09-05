@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#f5323e</color>
+
+    <color name="colorPrimaryDark">#f5323e</color>
+    <color name="colorAccent">#FF4081</color>
+    <color name="primarySelect">#e4212d</color>
+    <color name="half_transparent">#7fff</color>
+    <color name="transparent">#0fff</color>
+    <color name="white">#fff</color>
+    <color name="gray_line">#CCCCCC</color>
+    <color name="bg_all">#f0f0f0</color>
+    <color name="black">#000</color>
+    <color name="black3">#333</color>
+    <color name="black5">#555</color>
+    <color name="black6">#666</color>
+    <color name="black9">#999999</color>
+    <color name="gray7">#777</color>
+    <color name="gray9">#999</color>
+    <color name="item_selected_color">#eeeeee</color>
+    <color name="gray_text_hint">#aaa</color>
+    <color name="light_white2">#DDD</color>
+    <color name="red">#f00</color>
+    <color name="unenable_color">#f4f4f4</color>
+    <color name="green_normal">#80da37</color>
+    <color name="green_selected">#70c926</color>
+    <color name="red_badge">#ff3e19</color>
+    <color name="yellow_text">#faba54</color>
+
+    <!--项目中需要用到的色值-->
+    <!--线条的颜色-->
+    <color name="color_gray_ccc">#CCCCCC</color>
+    <!--按钮不可点击的颜色-->
+    <color name="disable_color">#CCCCCC</color>
+    <color name="hint_color">#999</color>
+    <color name="search_edit_color">#F0F0F0</color>
+
+</resources>

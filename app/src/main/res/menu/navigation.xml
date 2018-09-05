@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+        <item
+            android:id="@+id/navigation_home"
+            android:icon="@drawable/tab_1_selector"
+            android:title="@string/table_vegetables" />
+
+        <item
+            android:id="@+id/navigation_video"
+            android:icon="@drawable/tab_2_selector"
+            android:title="@string/table_experience" />
+
+        <item
+            android:id="@+id/navigation_square"
+            android:icon="@drawable/tab_2_selector"
+            android:title=""
+            />
+        <item
+            android:id="@+id/navigation_audio"
+            android:icon="@drawable/tab_3_selector"
+            android:title="@string/table_cook" />
+        <item
+            android:id="@+id/navigation_mine"
+            android:icon="@drawable/tab_4_selector"
+            android:title="@string/table_mine" />
+
+</menu>

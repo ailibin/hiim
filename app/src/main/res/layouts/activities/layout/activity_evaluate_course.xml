@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <include layout="@layout/include_title_bar" />
+
+    <include layout="@layout/include_dividing_line" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:paddingTop="10dp">
+
+
+        <com.aiitec.widgets.ratingbar.BaseRatingBar
+            android:id="@+id/br_for_evaluate_course"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="8dp"
+            android:layout_marginRight="8dp"
+            app:srb_clickable="true"
+            app:srb_drawableEmpty="@drawable/selected_icon_message"
+            app:srb_drawableFilled="@drawable/selected_icon_star"
+            app:srb_minimumStars="1"
+            app:srb_numStars="5"
+            app:srb_rating="5"
+            app:srb_starHeight="28dp"
+            app:srb_starPadding="10dp"
+            app:srb_starWidth="28dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="10dp"
+            android:text="给课程打个分吧~"
+            android:textColor="#6A6A6A"
+            android:textSize="12sp" />
+
+    </LinearLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="20dp"
+        android:minHeight="101dp">
+
+        <EditText
+            android:id="@+id/et_evaluate_for_course"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="top"
+            android:hint="请写下10个字以上的评语..."
+            android:minHeight="101dp"
+            android:padding="6dp"
+            android:textColor="@color/black3"
+            android:textSize="13sp" />
+
+        <TextView
+            android:id="@+id/tv_limit_font_size"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/et_evaluate_for_course"
+            android:layout_alignRight="@+id/et_evaluate_for_course"
+            android:paddingBottom="5dp"
+            android:paddingRight="5dp"
+            android:text="限300字"
+            android:textColor="#797979"
+            android:textSize="12sp" />
+
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/tv_commit_evaluate"
+        android:layout_width="match_parent"
+        android:layout_height="41dp"
+        android:layout_marginLeft="51dp"
+        android:layout_marginRight="51dp"
+        android:layout_marginTop="23dp"
+        android:gravity="center"
+        android:text="提交评价"
+        android:textColor="@color/white"
+        android:textSize="16sp" />
+
+    <TextView
+        android:id="@+id/tv_upload"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="20dp"
+        android:background="@color/white"
+        android:gravity="center"
+        android:text="上传头像"
+        android:textSize="14sp"
+        android:visibility="gone" />
+
+    <TextView
+        android:id="@+id/tv_select_district"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="20dp"
+        android:background="@color/white"
+        android:gravity="center"
+        android:text="测试选择地区"
+        android:textSize="14sp"
+        android:visibility="gone" />
+
+
+    <TextView
+        android:id="@+id/tv_select_birthday"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="20dp"
+        android:background="@color/white"
+        android:gravity="center"
+        android:text="测试选择生日"
+        android:textSize="14sp"
+        android:visibility="gone" />
+
+
+</LinearLayout>

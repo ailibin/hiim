@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+    <RelativeLayout
+        android:id="@+id/rlt_select_other"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/title_height"
+        android:background="#EAEAEA"
+        android:gravity="center_vertical">
+
+        <Button
+            android:id="@+id/tv_dialog_cancel"
+            android:layout_width="60dp"
+            android:layout_height="match_parent"
+            android:background="@android:color/transparent"
+            android:gravity="center"
+            android:text="取消"
+            android:textColor="@color/black3"
+            android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/tv_dialog_title"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_centerInParent="true"
+            android:background="@android:color/transparent"
+            android:gravity="center"
+            android:text="选择城市"
+            android:textColor="@color/black3"
+            android:textSize="14sp" />
+
+        <Button
+            android:id="@+id/tv_dialog_confirm"
+            android:layout_width="60dp"
+            android:layout_height="match_parent"
+            android:layout_alignParentRight="true"
+            android:background="@android:color/transparent"
+            android:gravity="center"
+            android:text="完成"
+            android:textColor="@color/black3"
+            android:textSize="14sp" />
+    </RelativeLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:background="#EEEEEE" />
+
+
+
+    <com.aigestudio.wheelpicker.widgets.WheelDatePicker
+        android:id="@+id/wheelDatePicker"
+        android:layout_width="match_parent"
+        android:background="@color/white"
+        android:layout_height="190dp"/>
+
+</LinearLayout>
