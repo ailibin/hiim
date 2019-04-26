@@ -1,1 +1,1 @@
-include ':app',':entitylibrary',':socialsdklibrary',':imlibrary',':aiiopenapi'
+include ':app', ':socialsdklibrary', ':imlibrary', ':keyboardlibrary'

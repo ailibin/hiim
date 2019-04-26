@@ -15,6 +15,11 @@ android {
         versionName "1.0.0831"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         multiDexEnabled true
+
+//        ndk {
+//            // 需要将 x86 架构过滤掉
+//            abiFilters "armeabi", "armeabi-v7a", "arm64-v8a"
+//        }
     }
     signingConfigs {
 
@@ -54,20 +59,13 @@ android {
             signingConfig signingConfigs.debug
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
 
-//            ndk {
-//                // 需要将 x86 架构过滤掉
-//                abiFilters "armeabi", "armeabi-v7a", "arm64-v8a"
-//            }
+
         }
         release {
             minifyEnabled false
             signingConfig signingConfigs.release
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
 
-//            ndk {
-//                // 需要将 x86 架构过滤掉
-//                abiFilters "armeabi", "armeabi-v7a", "arm64-v8a"
-//            }
         }
     }
 
@@ -132,9 +130,7 @@ dependencies {
     implementation 'com.android.support:multidex:1.0.3'
     implementation 'com.jcodecraeer:xrecyclerview:1.5.9'
     implementation project(':socialsdklibrary')
-    implementation 'com.aiitec.private:alipay:1.0.0-SNAPSHOT'
-    implementation project(':entitylibrary')
-    compile project(':aiiopenapi')
+//    implementation 'com.aiitec.private:alipay:1.0.0-SNAPSHOT'
     implementation project(':imlibrary')
     // 微信支付
     compile 'com.tencent.mm.opensdk:wechat-sdk-android-without-mta:+'
@@ -162,9 +158,6 @@ dependencies {
     compile 'com.github.chrisbanes:PhotoView:latest.release'
     //左划finish界面功能
     implementation 'com.r0adkll:slidableactivity:2.0.5'
-//    implementation files('libs/aiiopenapi.jar')
-//    compile 'com.aiitec.aiisqlite:aiisqlte:1.0.3'
-//    compile 'com.aiitec.private:aiijson:1.0.0'
 }
 repositories {
     mavenCentral()
