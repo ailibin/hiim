@@ -28,7 +28,7 @@ task nativeLibsToJar(type: Zip, description: "create a jar archive of the native
 
 
 dependencies {
-    compile fileTree(include: ['*.jar'], dir: 'libs')
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
     testCompile 'junit:junit:4.12'
     implementation files('libs/SocialSDK_QQ_Simplify.jar')
     implementation files('libs/SocialSDK_Sina_Simplify.jar')
