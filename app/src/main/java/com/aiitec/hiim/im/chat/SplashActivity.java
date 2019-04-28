@@ -58,11 +58,6 @@ public class SplashActivity extends FragmentActivity implements SplashView, TIMC
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_splash);
         final List<String> permissionsList = new ArrayList<>();
-//        if (ConnectionResult.SUCCESS != GoogleApiAvailability.getInstance().isGooglePlayServicesAvailable(this)){
-//            Toast.makeText(this, getString(R.string.google_service_not_available), Toast.LENGTH_SHORT).show();
-////            GoogleApiAvailability.getInstance().getErrorDialog(this, GoogleApiAvailability.getInstance().isGooglePlayServicesAvailable(this),
-////                    GOOGLE_PLAY_RESULT_CODE).show();
-//        }
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             if ((checkSelfPermission(Manifest.permission.READ_PHONE_STATE) != PackageManager.PERMISSION_GRANTED))
                 permissionsList.add(Manifest.permission.READ_PHONE_STATE);
@@ -91,8 +86,6 @@ public class SplashActivity extends FragmentActivity implements SplashView, TIMC
             @Override
             public void onForceOffline() {
                 Log.d(TAG, "receive force offline message");
-//                Intent intent = new Intent(SplashActivity.this, DialogActivity.class);
-//                startActivity(intent);
                 Intent intent = new Intent(SplashActivity.this, HostLoginActivity.class);
                 startActivity(intent);
             }

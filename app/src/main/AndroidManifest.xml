@@ -109,7 +109,6 @@
             </intent-filter>
         </receiver>
         <!-- im相关配置end -->
-
         <!--地图相关-->
         <activity android:name=".im.location.MapOptionActivity" />
         <activity android:name=".LocationMessageActivity" />
@@ -178,7 +177,6 @@
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:screenOrientation="portrait"
             android:theme="@android:style/Theme.Translucent.NoTitleBar" />
-
         <!--友盟分享配置结束-->
 
         <!--高德地图-->

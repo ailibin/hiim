@@ -16,7 +16,7 @@ import android.widget.CheckBox;
 import android.widget.TextView;
 
 import com.aiitec.hiim.R;
-import com.aiitec.openapi.utils.ScreenUtils;
+import com.aiitec.hiim.utils.ScreenUtils;
 
 
 public abstract class AbsCommonDialog extends Dialog {
@@ -76,13 +76,6 @@ public abstract class AbsCommonDialog extends Dialog {
 //        setGravity(params);
     }
 
-    //解决pt适配在dialog中适配失效的问题
-//    @Override
-//    protected void onCreate(Bundle savedInstanceState) {
-//        super.onCreate(savedInstanceState);
-////        RudenessScreenHelper.resetDensity(getContext(), Constant.INSTANCE.getDESIGN_WIDTH());
-//    }
-
 
     public void setAnimationStyle(int animStyle) {
         getWindow().setWindowAnimations(animStyle);
@@ -115,9 +108,6 @@ public abstract class AbsCommonDialog extends Dialog {
                 });
             }
         }
-//        if(cb_remind != null && onCheckListener != null){
-//            cb_remind.setOnCheckedChangeListener(onCheckListener);
-//        }
     }
 
     @Override
@@ -129,7 +119,8 @@ public abstract class AbsCommonDialog extends Dialog {
 
     public WindowManager.LayoutParams setLayoutParams(
             WindowManager.LayoutParams lp) {
-        lp.width = (int) (ScreenUtils.getScreenWidth(context) * widthScale()); // 设置宽度
+        // 设置宽度
+        lp.width = (int) (ScreenUtils.getScreenWidth() * widthScale());
         return lp;
     }
 

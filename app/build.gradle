@@ -78,6 +78,16 @@ android {
         }
     }
 
+    //cpu过滤
+    splits {
+        abi {
+            enable true
+            reset()
+            include 'armeabi'
+            universalApk false
+        }
+    }
+
     //layout分包处理
     sourceSets {
         main {
