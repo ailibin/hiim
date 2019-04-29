@@ -3,7 +3,7 @@ package com.aiitec.hiim.utils;
 import android.content.Context;
 
 import com.aiitec.hiim.base.Constants;
-import com.aiitec.openapi.utils.LogUtil;
+import com.aiitec.hiim.im.utils.LogUtil;
 import com.amap.api.location.AMapLocation;
 import com.amap.api.location.AMapLocationClient;
 import com.amap.api.location.AMapLocationClientOption;

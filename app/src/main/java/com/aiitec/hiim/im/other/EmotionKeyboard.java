@@ -15,8 +15,9 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 
-import com.aiitec.openapi.utils.LogUtil;
-import com.aiitec.openapi.utils.ScreenUtils;
+import com.aiitec.hiim.im.utils.LogUtil;
+import com.aiitec.hiim.utils.ScreenUtils;
+
 
 /**
  * @author afb
@@ -216,7 +217,6 @@ public class EmotionKeyboard {
             emotionHeight = sp.getInt(SHARE_PREFERENCE_EMOTION_HEIGHT, ScreenUtils.dip2px(mActivity, 196));
         }
         hideSoftInput();
-
         mEmotionLayout.getLayoutParams().height = emotionHeight;
         mEmotionLayout.setVisibility(View.VISIBLE);
     }

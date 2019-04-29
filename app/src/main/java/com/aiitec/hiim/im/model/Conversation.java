@@ -3,8 +3,8 @@ package com.aiitec.hiim.im.model;
 import android.content.Context;
 import android.text.TextUtils;
 
-import com.aiitec.openapi.utils.AiiUtil;
-import com.aiitec.openapi.utils.LogUtil;
+import com.aiitec.hiim.im.utils.AiiUtil;
+import com.aiitec.hiim.im.utils.LogUtil;
 import com.tencent.imsdk.TIMConversationType;
 import com.tencent.imsdk.TIMFriendshipManager;
 import com.tencent.imsdk.TIMUserProfile;

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.aiitec.hiim">
 
     <uses-permission android:name="android.permission.INTERNET" />
@@ -42,7 +43,8 @@
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:supportsRtl="true"
-        android:theme="@style/transparentStatusTheme">
+        android:theme="@style/transparentStatusTheme"
+        tools:ignore="GoogleAppIndexingWarning">
         <activity android:name="com.aiitec.hiim.ui.TabLayoutActivity" />
         <activity android:name="com.aiitec.hiim.ui.NetErrDescActivity" />
         <activity android:name="com.aiitec.hiim.ui.login.LoginActivity" />
@@ -57,6 +59,10 @@
             </intent-filter>
         </activity>
 
+        <activity
+            android:name=".ui.MainActivity"
+            android:launchMode="singleTask" />
+
         <activity android:name=".im.other.ChatBigImageShowActivity" />
         <activity android:name=".im.chat.NewFriendActivity" />
         <activity
@@ -66,7 +72,6 @@
         <activity android:name=".im.other.PhotoActivity" />
 
         <!-- im相关配置start -->
-        <!-- 这个参数所有的项目都是一样的 -->
         <meta-data
             android:name="com.tencent.rdm.uuid"
             android:value="6c6cb924-3f85-4ad9-b7eb-37b2b624f046" />
@@ -108,75 +113,13 @@
                 <action android:name="com.tencent.qalsdk.service.TASK_REMOVED" />
             </intent-filter>
         </receiver>
+
         <!-- im相关配置end -->
-        <!--地图相关-->
         <activity android:name=".im.location.MapOptionActivity" />
         <activity android:name=".LocationMessageActivity" />
 
         <!-- 友盟分享相关配置开始 -->
-        <activity
-            android:name="com.aiitec.hiim.wxapi.WXEntryActivity"
-            android:configChanges="keyboardHidden|orientation|screenSize"
-            android:exported="true"
-            android:screenOrientation="portrait"
-            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
 
-        <activity
-            android:name="com.aiitec.hiim.wxapi.WXPayEntryActivity"
-            android:configChanges="keyboardHidden|orientation|screenSize"
-            android:exported="true"
-            android:screenOrientation="portrait"
-            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
-
-
-        <activity
-            android:name="com.umeng.socialize.media.WBShareCallBackActivity"
-            android:configChanges="keyboardHidden|orientation"
-            android:exported="false"
-            android:screenOrientation="portrait"
-            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
-        <activity
-            android:name="com.sina.weibo.sdk.web.WeiboSdkWebActivity"
-            android:configChanges="keyboardHidden|orientation"
-            android:exported="false"
-            android:windowSoftInputMode="adjustResize" />
-
-        <activity
-            android:name="com.sina.weibo.sdk.share.WbShareTransActivity"
-            android:launchMode="singleTask"
-            android:theme="@android:style/Theme.Translucent.NoTitleBar.Fullscreen">
-            <intent-filter>
-                <action android:name="com.sina.weibo.sdk.action.ACTION_SDK_REQ_ACTIVITY" />
-                <category android:name="android.intent.category.DEFAULT" />
-            </intent-filter>
-
-        </activity>
-
-        <activity
-            android:name="com.tencent.tauth.AuthActivity"
-            android:launchMode="singleTask"
-            android:noHistory="true">
-            <intent-filter>
-                <action android:name="android.intent.action.VIEW" />
-
-                <category android:name="android.intent.category.DEFAULT" />
-                <category android:name="android.intent.category.BROWSABLE" />
-
-                <data android:scheme="tencent1106743149" />
-            </intent-filter>
-        </activity>
-
-        <activity
-            android:name="com.alipay.sdk.app.H5PayActivity"
-            android:configChanges="orientation|keyboardHidden|navigation"
-            android:exported="false"
-            android:screenOrientation="behind" />
-
-        <activity
-            android:name="com.tencent.connect.common.AssistActivity"
-            android:configChanges="orientation|keyboardHidden|screenSize"
-            android:screenOrientation="portrait"
-            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
         <!--友盟分享配置结束-->
 
         <!--高德地图-->

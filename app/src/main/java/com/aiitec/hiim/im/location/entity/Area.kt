@@ -2,13 +2,12 @@ package com.herentan.giftfly.ui.location.entity
 
 import android.os.Parcel
 import android.os.Parcelable
-import com.aiitec.openapi.model.Entity
 
 /**
  * Created by ailibin on 2018/1/30.
  * 高德地图用到地区信息
  */
-class Area() : Entity(), Parcelable {
+class Area() : Parcelable {
 
     var name = ""
 

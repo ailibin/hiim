@@ -57,39 +57,16 @@ public class NewFriendAdapter extends CommonRecyclerViewAdapter<ListUser> {
                 status.setText(res.getString(R.string.newfri_agree));
                 //设置字体颜色
                 status.setTextColor(Color.parseColor("#DE7FEF"));
-//                status.setOnClickListener(new View.OnClickListener() {
-//                    @Override
-//                    public void onClick(View v) {
-//                        if (onAgreeListener != null) {
-//                            onAgreeListener.onAgree(position, entity.getId());
-//                        }
-//                    }
-//                });
-//                status.setBackgroundResource(R.drawable.btn_purple_stroke_shape);
                 break;
             case 1:
                 status.setText(res.getString(R.string.newfri_wait));
                 status.setBackgroundResource(R.color.transparent);
-//                status.setOnClickListener(new View.OnClickListener() {
-//                    @Override
-//                    public void onClick(View v) {
-//                        //需要覆盖掉上面的监听，因为当relationship = 2 时，设置了监听，后来变成3了，
-//                        // 虽然没有设置监听，但是之前的还是生效的，所以还会执行到onAgree
-//                    }
-//                });
                 break;
             case 3:
                 status.setText(res.getString(R.string.newfri_accept));
                 //设置字体颜色
                 status.setTextColor(Color.parseColor("#999999"));
                 status.setBackgroundResource(R.color.transparent);
-//                status.setOnClickListener(new View.OnClickListener() {
-//                    @Override
-//                    public void onClick(View v) {
-//                        //需要覆盖掉上面的监听，因为当relationship = 2 时，设置了监听，后来变成3了，
-//                        // 虽然没有设置监听，但是之前的还是生效的，所以还会执行到onAgree
-//                    }
-//                });
                 break;
             default:
                 break;

@@ -1,4 +1,4 @@
-package com.herentan.giftfly.ui.location
+package com.aiitec.hiim.im.location
 
 import android.content.Context
 import android.view.View

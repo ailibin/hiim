@@ -17,7 +17,23 @@ import android.text.TextWatcher
 import android.view.*
 import android.view.inputmethod.EditorInfo
 import android.widget.*
-import com.aiitec.imlibrary.R.layout.emojicons
+import com.aiitec.hiim.R
+import com.aiitec.hiim.annotation.ContentView
+import com.aiitec.hiim.base.BaseKtActivity
+import com.aiitec.hiim.im.adapter.ChatAdapter
+import com.aiitec.hiim.im.adapter.ChatOperationAdapter
+import com.aiitec.hiim.im.entity.Item
+import com.aiitec.hiim.im.location.LocationActivity
+import com.aiitec.hiim.im.location.util.ToastUtil
+import com.aiitec.hiim.im.model.*
+import com.aiitec.hiim.im.other.EmotionKeyboard
+import com.aiitec.hiim.im.other.PhotoActivity
+import com.aiitec.hiim.im.utils.AiiUtil
+import com.aiitec.hiim.im.utils.LogUtil
+import com.aiitec.hiim.im.utils.MediaUtil
+import com.aiitec.hiim.utils.BaseUtil
+import com.aiitec.hiim.utils.PermissionsUtils
+import com.aiitec.hiim.utils.SoftKeyboardStateHelper
 import com.aiitec.imlibrary.emojicon.EmojiconEditText
 import com.aiitec.imlibrary.emojicon.EmojiconGridFragment
 import com.aiitec.imlibrary.emojicon.EmojiconsFragment
@@ -29,24 +45,6 @@ import com.aiitec.imlibrary.presentation.viewfeatures.ChatView
 import com.aiitec.imlibrary.presentation.viewfeatures.GroupInfoView
 import com.aiitec.imlibrary.ui.PathUtil
 import com.aiitec.imlibrary.ui.VoiceRecorderView
-import com.aiitec.hiim.R
-import com.aiitec.hiim.R.id.*
-import com.aiitec.hiim.annotation.ContentView
-import com.aiitec.hiim.base.BaseKtActivity
-import com.aiitec.hiim.im.adapter.ChatAdapter
-import com.aiitec.hiim.im.adapter.ChatOperationAdapter
-import com.aiitec.hiim.im.entity.Item
-import com.aiitec.hiim.im.location.LocationActivity
-import com.aiitec.hiim.im.model.*
-import com.aiitec.hiim.im.other.EmotionKeyboard
-import com.aiitec.hiim.im.other.PhotoActivity
-import com.aiitec.hiim.im.utils.MediaUtil
-import com.aiitec.hiim.utils.BaseUtil
-import com.aiitec.hiim.utils.PermissionsUtils
-import com.aiitec.hiim.utils.SoftKeyboardStateHelper
-import com.aiitec.openapi.utils.AiiUtil
-import com.aiitec.openapi.utils.LogUtil
-import com.aiitec.openapi.utils.ToastUtil
 import com.herentan.giftfly.ui.location.entity.Area
 import com.tencent.imsdk.*
 import com.tencent.imsdk.ext.group.TIMGroupDetailInfo
@@ -127,6 +125,8 @@ class ChatActivity : BaseKtActivity(), ChatView,
                 R.drawable.chat_btn_place2x)
         var contentStr = arrayListOf("相册", "拍照", "位置")
 
+        val TAG = "ailibin"
+
         fun navToChat(context: Context, identify: String, nickname: String, type: TIMConversationType) {
             val intent = Intent(context, ChatActivity::class.java)
             intent.putExtra("identify", identify)
@@ -158,19 +158,19 @@ class ChatActivity : BaseKtActivity(), ChatView,
         PathUtil.getInstance().initDirs(null, identify, this)
         titleStr = identify
         type = intent.getSerializableExtra("type") as TIMConversationType?
-        if (type == TIMConversationType.Group) {
-            nickname = intent.getStringExtra("nickname")
+        nickname = if (type == TIMConversationType.Group) {
+            intent.getStringExtra("nickname")
         } else {
-            nickname = AiiUtil.getString(this, "nickname_" + identify!!, identify)
+            AiiUtil.getString(this, "nickname_" + identify!!, identify)
         }
 
-        LogUtil.d("ailibin", "nickname1: $nickname")
+        LogUtil.d(TAG, "nickname1: $nickname")
         if (!TextUtils.isEmpty(nickname)) {
             titleStr = nickname
         }
 
         //加上这句设置标题,不然标题显示名称的很混乱
-        LogUtil.d("ailibin", "titleStr: $titleStr")
+        LogUtil.d(TAG, "titleStr: $titleStr")
         initView()
         initOperationData()
         initOperationView()
@@ -184,7 +184,7 @@ class ChatActivity : BaseKtActivity(), ChatView,
         adapter?.setConversationType(type)
 
         val otherAvatar = AiiUtil.getString(this, "avatar_$identify")
-        LogUtil.d("ailibin", "otherAvatar: $otherAvatar")
+        LogUtil.d(TAG, "otherAvatar: $otherAvatar")
         if (type == TIMConversationType.C2C) {
             //单聊才设置另外一个人的头像
             if (!TextUtils.isEmpty(otherAvatar)) {
@@ -219,7 +219,7 @@ class ChatActivity : BaseKtActivity(), ChatView,
                     val nMessageId = messageList[i].message.msgId
                     if (messageId == nMessageId) {
                         index = i
-                        LogUtil.d("ailibin", "index: $index")
+                        LogUtil.d(TAG, "index: $index")
                         return
                     }
                 }
@@ -231,7 +231,7 @@ class ChatActivity : BaseKtActivity(), ChatView,
         presenter?.start()
         adapter?.notifyDataSetChanged()
         setListener()
-//        EventBus.getDefault().register(this)
+
     }
 
 
@@ -268,18 +268,8 @@ class ChatActivity : BaseKtActivity(), ChatView,
             //设置右边图标的点击事件
             if (type == TIMConversationType.C2C) {
                 //传一个用户带前缀IMid过去
-//                val bundle = Bundle()
-//                bundle.putString(FriendProfileActivity.PARAM_IDENTIFY, identify)
-//                bundle.putInt(FriendProfileActivity.MESSAGE_NUM, messageNums)
-//                switchToActivity(FriendProfileActivity::class.java, bundle)
             } else {
                 //传一个群id过去
-                val bundle = Bundle()
-//                val groupId = parseLong(identify?.replace("IM", ""))
-//                bundle.putInt(GroupProfileActivity.MESSAGE_NUM, messageNums)
-//                bundle.putLong(SelectFriendActivity.GROUP_ID, groupId)
-//                switchToActivity(GroupProfileActivity::class.java, bundle)
-
             }
         })
 
@@ -321,7 +311,6 @@ class ChatActivity : BaseKtActivity(), ChatView,
                 2 -> {
                     //位置
                     switchToActivityForResult(LocationActivity::class.java, REQUEST_LOCATION)
-//                    sendLocation()
                 }
             }
         }
@@ -442,13 +431,11 @@ class ChatActivity : BaseKtActivity(), ChatView,
         if (type == TIMConversationType.C2C) {
             //单聊类型,显示对方的名称
             setColumnTitle(titleStr!!)
-//            setRightBtnImageIcon(1, R.drawable.chat_btn_data, 0)
         } else {
             groupIds.clear()
             identify.let {
                 groupIds.add(it!!)
             }
-//            setRightBtnImageIcon(1, R.drawable.chat_btn_group_data2x, 0)
         }
     }
 
@@ -468,13 +455,6 @@ class ChatActivity : BaseKtActivity(), ChatView,
                 } else {
                     setColumnTitle("$groupName($num)")
                 }
-//                LogUtil.d("ailibin", "groupId: " + info.groupId  //群组 ID
-//                        + " group name: " + info.groupName              //群组名称
-//                        + " group owner: " + info.groupOwner            //群组创建者帐号
-//                        + " group create time: " + info.createTime      //群组创建时间
-//                        + " group last info time: " + info.lastInfoTime //群组信息最后修改时间
-//                        + " group last msg time: " + info.lastMsgTime  //最新群组消息时间
-//                        + " group member num: " + info.memberNum)      //群组成员数量
             }
         } else {
             groupName = GroupInfo.getInstance().getGroupName(identify)
@@ -561,7 +541,6 @@ class ChatActivity : BaseKtActivity(), ChatView,
         listView?.setOnTouchListener { v, event ->
             when (event.action) {
                 MotionEvent.ACTION_DOWN -> {
-                    // input.setInputMode(ChatInput.InputMode.NONE);
                     hideOtherMenu(-1)
                     if (softKeyboardStateHelper!!.isSoftKeyboardOpened) {
                         AiiUtil.hideKeyboard(this@ChatActivity, input)
@@ -614,26 +593,10 @@ class ChatActivity : BaseKtActivity(), ChatView,
         adapter?.setOnAvatarClickListener(object : ChatAdapter.OnAvatarClickListener {
             override fun onClickSelfAvatar() {
                 //点击自己的头像(这里还是要传一个id过去,因为contactInfo协议需要一个用户id)
-//                val bundle = Bundle()
-//                val id = Constants.user?.id
-//                bundle.putLong(UserDetailActivity.PARAM_ID, id!!)
-//                bundle.putBoolean(UserDetailActivity.ARG_IS_SELF, true)
-//                switchToActivity(UserDetailActivity::class.java, bundle)
             }
 
             override fun onClickOtherAvatar(identify: String) {
                 //点击其他人的头像(传一个其他人的ID过去),这里不能是群id,不然就崩了
-//                val bundle = Bundle()
-//                bundle.putString(UserDetailActivity.ARG_NICKNAME, nickname)
-//                bundle.putString(UserDetailActivity.ARG_IDENTIFY, identify)
-//                try {
-//                    val id = parseLong(identify?.replace(Constants.IM_PREFIX, ""))
-//                    bundle.putLong(UserDetailActivity.PARAM_ID, id)
-//                    LogUtil.d("ailibin", "PARAM_ID: " + id)
-//                } catch (e: Exception) {
-//                    e.printStackTrace()
-//                }
-//                switchToActivity(UserDetailActivity::class.java, bundle)
             }
         })
     }
@@ -683,31 +646,12 @@ class ChatActivity : BaseKtActivity(), ChatView,
     override fun onPause() {
         super.onPause()
         //退出聊天界面时输入框有内容，保存草稿
-        if (input!!.text.isNotEmpty()) {
+        if (input!!.text!!.isNotEmpty()) {
             val message = TextMessage(input?.text)
             presenter?.saveDraft(message.message)
         } else {
             presenter?.saveDraft(null)
         }
-//        for (i in 0 until messageList.size) {
-//            val message = messageList[i]
-//            val readMessage = message.message
-//            if (!message.isSelf) {
-//                //发给别人的语音消息
-//                if (message is VoiceMessage) {
-//                    val isRead = presenter?.isVoiceMessageRead(readMessage)
-//                    if (isRead!!) {
-//                        presenter?.readMessage(readMessage)
-//                    }else{
-//                        continue
-//                    }
-//                } else {
-//                    presenter?.readMessage(readMessage)
-//                }
-//            } else {
-//                presenter?.readMessage(readMessage)
-//            }
-//        }
         presenter?.readMessages()
         MediaUtil.getInstance().stop()
     }
@@ -715,25 +659,7 @@ class ChatActivity : BaseKtActivity(), ChatView,
     override fun onDestroy() {
         super.onDestroy()
         presenter?.stop()
-//        EventBus.getDefault().unregister(this)
     }
-
-//    private fun refreshVoiceUnRead() {
-//        for (i in 0 until messageList.size) {
-//            val message = messageList[i]
-//            val readMessage = message.message
-//            if (!message.isSelf) {
-//                //发给别人的语音消息
-//                if (message is VoiceMessage) {
-//                    continue
-//                } else {
-//                    presenter?.readMessage(readMessage)
-//                }
-//            } else {
-//                presenter?.readMessage(readMessage)
-//            }
-//        }
-//    }
 
 
     /**
@@ -780,7 +706,7 @@ class ChatActivity : BaseKtActivity(), ChatView,
                                 handler.removeCallbacks(resetTitle)
                                 handler.postDelayed(resetTitle, 2000)
                             }
-                        //这里双方都要展示位置消息(在自定义消息里面)
+                            //这里双方都要展示位置消息(在自定义消息里面)
                             CustomMessage.Type.LOCATION -> {
                                 //地理位置消息
                                 val customMessage = mMessage

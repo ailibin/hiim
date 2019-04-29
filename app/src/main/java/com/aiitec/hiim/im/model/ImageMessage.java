@@ -20,6 +20,7 @@ import com.aiitec.hiim.im.other.ChatBigImageShowActivity;
 import com.aiitec.hiim.im.utils.FileUtil;
 import com.aiitec.hiim.utils.GlideRoundTransform;
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.RequestOptions;
 import com.tencent.imsdk.TIMCallBack;
 import com.tencent.imsdk.TIMImage;
 import com.tencent.imsdk.TIMImageElem;
@@ -64,17 +65,13 @@ public class ImageMessage extends Message {
 
     private void loadImage(String path, ImageView imageView) {
         if (path.startsWith("http://")) {
-            Glide.with(context).load(path)/*.placeholder(R.drawable.img_default)
-                    .error(R.drawable.img_default)*/
-                    .override(width, width)
-                    .transform(new GlideRoundTransform(context, 12))
+            Glide.with(context).load(path)
+                    .apply(new RequestOptions().transform(new GlideRoundTransform(context, 12)))
                     .into(imageView);
 
         } else {
-            Glide.with(context).load(new File(path))/*.placeholder(R.drawable.img_default)
-                    .error(R.drawable.img_default)*/
-                    .override(width, width)
-                    .transform(new GlideRoundTransform(context, 12))
+            Glide.with(context).load(new File(path))
+                    .apply(new RequestOptions().transform(new GlideRoundTransform(context, 12)))
                     .into(imageView);
         }
 
@@ -102,7 +99,6 @@ public class ImageMessage extends Message {
                 ImageView imageView = new ImageView(App.Companion.getContext());
                 ViewGroup.LayoutParams params = new ViewGroup.LayoutParams(width, width);
                 imageView.setLayoutParams(params);
-//                imageView.setImageBitmap(getThumb(e.getPath()));
                 String path = e.getPath();
 
                 loadImage(path, imageView);
@@ -287,7 +283,7 @@ public class ImageMessage extends Message {
                         //错误码code和错误描述desc，可用于定位请求失败原因
                         //错误码code含义请参见错误码表
                         Log.e(TAG, "getImage failed. code: " + i + " errmsg: " + s);
-                        Toast.makeText(context,App.Companion.getContext().getString(R.string.download_fail), Toast.LENGTH_SHORT).show();
+                        Toast.makeText(context, App.Companion.getContext().getString(R.string.download_fail), Toast.LENGTH_SHORT).show();
                         isDownloading = false;
                     }
 
@@ -300,7 +296,7 @@ public class ImageMessage extends Message {
                     }
                 });
             } else {
-                Toast.makeText(context,App.Companion.getContext().getString(R.string.downloading), Toast.LENGTH_SHORT).show();
+                Toast.makeText(context, App.Companion.getContext().getString(R.string.downloading), Toast.LENGTH_SHORT).show();
             }
         }
     }

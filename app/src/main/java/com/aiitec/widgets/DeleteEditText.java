@@ -11,7 +11,8 @@ import android.text.TextWatcher;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 
-import com.aiitec.openapi.utils.ScreenUtils;
+import com.aiitec.hiim.utils.ScreenUtils;
+
 
 /**
  * @author Anthony

@@ -49,7 +49,6 @@ class LocationAdapter(context: Context, data: List<Area>) : CommonRecyclerViewAd
         if (item != null) {
             if (item.isSelected) {
                 ivSelect?.visibility = View.VISIBLE
-//                ivSelect?.setImageResource(R.drawable.common_btn_choose_pressed2x)
             } else {
                 ivSelect?.visibility = View.GONE
             }

@@ -17,12 +17,12 @@ import com.aiitec.hiim.im.entity.Contact
 import com.aiitec.hiim.im.entity.ListUser
 import com.aiitec.hiim.im.model.FriendProfile
 import com.aiitec.hiim.im.model.FriendshipInfo
+import com.aiitec.hiim.im.utils.AiiUtil
+import com.aiitec.hiim.im.utils.LogUtil
 import com.aiitec.hiim.ui.NetErrDescActivity
 import com.aiitec.hiim.utils.StatusBarUtil
 import com.aiitec.imlibrary.presentation.presenter.FriendshipManagerPresenter
 import com.aiitec.imlibrary.presentation.viewfeatures.FriendshipManageView
-import com.aiitec.openapi.utils.AiiUtil
-import com.aiitec.openapi.utils.LogUtil
 import com.aiitec.widgets.CharacterParser
 import com.aiitec.widgets.SideBar
 import com.tencent.imsdk.ext.sns.TIMFriendStatus

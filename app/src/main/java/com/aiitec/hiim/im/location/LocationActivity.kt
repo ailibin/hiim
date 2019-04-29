@@ -19,9 +19,9 @@ import com.aiitec.hiim.base.App
 import com.aiitec.hiim.base.BaseKtActivity
 import com.aiitec.hiim.im.location.util.AMapUtil
 import com.aiitec.hiim.im.location.util.ToastUtil
+import com.aiitec.hiim.im.utils.LogUtil
 import com.aiitec.hiim.utils.BaseUtil
-import com.aiitec.openapi.utils.LogUtil
-import com.aiitec.openapi.utils.ScreenUtils
+import com.aiitec.hiim.utils.ScreenUtils
 import com.amap.api.location.AMapLocation
 import com.amap.api.location.AMapLocationClient
 import com.amap.api.location.AMapLocationClientOption
@@ -40,7 +40,6 @@ import com.amap.api.services.help.Tip
 import com.amap.api.services.poisearch.PoiResult
 import com.amap.api.services.poisearch.PoiSearch
 import com.herentan.giftfly.ui.location.LocationAdapter
-import com.herentan.giftfly.ui.location.PoiLocationAdapter
 import com.herentan.giftfly.ui.location.entity.Area
 import com.herentan.giftfly.ui.location.entity.LatLon
 import kotlinx.android.synthetic.main.activity_location.*
@@ -94,8 +93,8 @@ class LocationActivity : BaseKtActivity(),
     //装图片地址
     private var datas = ArrayList<String>()
     //上传成功后的文件集相关
-    private var uploadedFileList = ArrayList<com.aiitec.openapi.model.File>()
-    private var pictureFile: com.aiitec.openapi.model.File? = null
+//    private var uploadedFileList = ArrayList<com.aiitec.openapi.model.File>()
+//    private var pictureFile: com.aiitec.openapi.model.File? = null
     //填充物颜色
     private val STROKE_COLOR = Color.argb(180, 3, 145, 255)
     private val FILL_COLOR = Color.argb(10, 0, 0, 180)
@@ -156,7 +155,7 @@ class LocationActivity : BaseKtActivity(),
         poiAdapter = PoiLocationAdapter(this, poiAddressDatas)
         val poiLayoutManager = LinearLayoutManager(this)
         //把底部recycleView高度设置为屏幕的百分之40
-        val height = ScreenUtils.getScreenHeight(this) * 0.4
+        val height = ScreenUtils.getScreenHeight() * 0.4
         recy_poiSearch?.layoutParams?.height = height.toInt()
         recy_poiSearch?.adapter = poiAdapter
         recy_poiSearch?.layoutManager = poiLayoutManager
@@ -218,10 +217,8 @@ class LocationActivity : BaseKtActivity(),
      * 在屏幕中心添加一个Marker
      */
     private fun addMarkerInScreenCenter() {
+
         val latLng = aMap?.cameraPosition?.target
-//        val cameraUpdate = CameraUpdateFactory.newCameraPosition(CameraPosition(
-//                latLng, 18f, 30f, 30f))
-//        aMap?.moveCamera(cameraUpdate)
         val screenPosition = aMap?.projection?.toScreenLocation(latLng)
         if (screenMarker == null) {
             screenMarker = aMap?.addMarker(MarkerOptions()
@@ -230,6 +227,7 @@ class LocationActivity : BaseKtActivity(),
         }
         //设置Marker在屏幕上,不跟随地图移动(需要移动),经纬度转屏幕位置
         screenMarker?.setPositionByPixels(screenPosition!!.x, screenPosition.y)
+
 
     }
 
@@ -301,44 +299,8 @@ class LocationActivity : BaseKtActivity(),
      */
     private fun toUpLoadImage(path: String) {
         datas.add(path)
-//        uploadFiles()
     }
 
-//    private fun uploadFiles() {
-//        val type = 1
-//        val tempDatas = ArrayList<File>()
-//        datas.filter { it != "add" }.map { File(it) }
-//                .forEach { tempDatas.add(it) }
-//        LogUtil.d("ailibin", "tempDatas: " + tempDatas.toString())
-//        customDialogShow()
-//        UploadFileUtils.requestUploadFiles(this, tempDatas, type, object : AIIResponse<FileListResponseQuery>(this) {
-//            override fun onSuccess(response: FileListResponseQuery?, index: Int) {
-//                super.onSuccess(response, index)
-//                customDialogDismiss()
-//                uploadedFileList.clear()
-//                uploadedFileList = (response?.files as ArrayList<com.aiitec.openapi.model.File>?)!!
-//                pictureFile = uploadedFileList[0]
-//
-//                //上传成功的文件路径(拿到绝对路径)
-//                val path = pictureFile?.path
-//                LogUtil.d("ailibin", "path: " + path)
-//                val imagePath = ImagePathUtil.getWholeImagePath(path)
-//                if (imageListener != null) {
-//                    imageListener?.onSuccess(imagePath)
-//                }
-//            }
-//
-//            override fun onServiceError(content: String?, status: Int, index: Int) {
-//                super.onServiceError(content, status, index)
-//                customDialogDismiss()
-//            }
-//
-//            override fun onFailure(content: String?, index: Int) {
-//                super.onFailure(content, index)
-//                customDialogDismiss()
-//            }
-//        })
-//    }
 
     private var imageListener: ImageListener? = null
 
@@ -410,7 +372,7 @@ class LocationActivity : BaseKtActivity(),
     }
 
     override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-        val newText = s.toString().trim({ it <= ' ' })
+        val newText = s.toString().trim { it <= ' ' }
         if (TextUtils.isEmpty(newText)) {
             //搜索内容为空,就不显示列表数据了
             addressDatas.clear()

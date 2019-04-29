@@ -5,7 +5,7 @@ import android.content.Context;
 import com.aiitec.hiim.R;
 import com.aiitec.hiim.base.App;
 import com.aiitec.hiim.im.chat.ChatActivity;
-import com.aiitec.openapi.utils.LogUtil;
+import com.aiitec.hiim.im.utils.LogUtil;
 import com.tencent.imsdk.TIMConversation;
 import com.tencent.imsdk.TIMConversationType;
 import com.tencent.imsdk.ext.message.TIMConversationExt;

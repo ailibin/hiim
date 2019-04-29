@@ -3,7 +3,6 @@ package com.aiitec.hiim.ui
 import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
-import android.content.IntentFilter
 import android.os.Bundle
 import android.text.TextUtils
 import android.util.TypedValue
@@ -11,10 +10,6 @@ import android.view.View
 import android.widget.ImageView
 import android.widget.RelativeLayout
 import android.widget.TextView
-import com.aiitec.imlibrary.presentation.presenter.ConversationPresenter
-import com.aiitec.imlibrary.presentation.presenter.FriendshipManagerPresenter
-import com.aiitec.imlibrary.presentation.viewfeatures.ConversationView
-import com.aiitec.imlibrary.presentation.viewfeatures.FriendshipMessageView
 import com.aiitec.hiim.R
 import com.aiitec.hiim.annotation.ContentView
 import com.aiitec.hiim.base.App
@@ -23,18 +18,19 @@ import com.aiitec.hiim.base.Constants
 import com.aiitec.hiim.base.Constants.ARG_TYPE
 import com.aiitec.hiim.base.Event
 import com.aiitec.hiim.im.model.*
+import com.aiitec.hiim.im.utils.AiiUtil
+import com.aiitec.hiim.im.utils.LogUtil
 import com.aiitec.hiim.im.utils.PushUtil
-import com.aiitec.hiim.ui.circle.CircleFragment
 import com.aiitec.hiim.ui.friend.FriendListFragment
 import com.aiitec.hiim.ui.home.ConversationFragment
-import com.aiitec.hiim.ui.login.LoginActivity
 import com.aiitec.hiim.ui.mine.MineFragment
 import com.aiitec.hiim.utils.LocationUtils
 import com.aiitec.hiim.utils.PermissionsUtils
-import com.aiitec.openapi.constant.AIIConstant
-import com.aiitec.openapi.utils.AiiUtil
-import com.aiitec.openapi.utils.LogUtil
-import com.aiitec.openapi.utils.ScreenUtils
+import com.aiitec.hiim.utils.ScreenUtils
+import com.aiitec.imlibrary.presentation.presenter.ConversationPresenter
+import com.aiitec.imlibrary.presentation.presenter.FriendshipManagerPresenter
+import com.aiitec.imlibrary.presentation.viewfeatures.ConversationView
+import com.aiitec.imlibrary.presentation.viewfeatures.FriendshipMessageView
 import com.aiitec.widgets.CommonDialog
 import com.tencent.imsdk.*
 import com.tencent.imsdk.ext.group.TIMGroupCacheInfo
@@ -58,15 +54,12 @@ class MainActivity : BaseKtActivity(), Observer, ConversationView {
     private val fragmentArray = arrayOf<Class<*>>(
             ConversationFragment::class.java,
             FriendListFragment::class.java,
-            CircleFragment::class.java,
             MineFragment::class.java)
     private val mImageViewArray = intArrayOf(
             R.drawable.tab_2_selector,
             R.drawable.tab_1_selector,
-            R.drawable.tab_3_selector,
             R.drawable.tab_4_selector)
-    //    private var titleArray = arrayOf("首页", "商品", "购物车", "我的")
-    private var titleArray = arrayOf("", "", "", "")
+    private var titleArray = arrayOf("聊天", "好友", "我的")
 
     lateinit var commonDialog: CommonDialog
     private var tabIndexLast = 0
@@ -90,8 +83,6 @@ class MainActivity : BaseKtActivity(), Observer, ConversationView {
 
     override fun init(savedInstanceState: Bundle?) {
 
-        val tables = resources.getStringArray(R.array.tables)
-        titleArray = tables
         tabhost.setup(this, supportFragmentManager, R.id.contentPanel)
         val fragmentCount = fragmentArray.size
         for (i in 0 until fragmentCount) {
@@ -174,23 +165,13 @@ class MainActivity : BaseKtActivity(), Observer, ConversationView {
 //                        cartFragment?.switchStatusMode(2)
 //                    }
                 }
-                titleArray[3] -> {
-                    currentIndex = 3
-//                    val mineFragment = supportFragmentManager.findFragmentByTag(s) as MineFragment?
-//                    //文字变白色
-//                    if (mineFragment != null) {
-//                        mineFragment?.switchStatusMode(1)
-//                    }
-                }
             }
         }
 
-//        EventBus.getDefault().register(this)
         getFriendMessageInfo()
         commonDialog = CommonDialog(this)
         commonDialog.setTitle("退出嗨APP？")
         onLogoutReceiver = OnLogoutReceiver()
-        registerReceiver(onLogoutReceiver, IntentFilter(AIIConstant.FILTER_ACTION_LOGIN_ON_OTHER))
     }
 
     /**
@@ -442,10 +423,6 @@ class MainActivity : BaseKtActivity(), Observer, ConversationView {
         }
         val message1 = MessageFactory.getMessage(message)
         if (MessageFactory.getMessage(message) is CustomMessage) {
-//            if ((message1 as CustomMessage).type === CustomMessage.Type.JOINED) {
-//                //不是自己的自定义消息 除加入外，其他都显示
-//                return
-//            }
         }
         var conversation = NormalConversation(message.conversation)
         if (conversation.type === TIMConversationType.C2C) {
@@ -496,9 +473,6 @@ class MainActivity : BaseKtActivity(), Observer, ConversationView {
      */
     inner class OnLogoutReceiver : BroadcastReceiver() {
         override fun onReceive(p0: Context?, p1: Intent?) {
-            if (p1?.action == AIIConstant.FILTER_ACTION_LOGIN_ON_OTHER) {
-                switchToActivity(LoginActivity::class.java)
-            }
         }
     }
 

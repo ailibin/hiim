@@ -2,21 +2,18 @@ package com.aiitec.hiim.im.entity
 
 import android.os.Parcel
 import android.os.Parcelable
-import com.aiitec.openapi.json.annotation.JSONField
-import com.aiitec.openapi.model.Entity
 
 /**
  * Created by ailibin on 2018/1/4.
  * 列表专用的User对象，因为如果直接用user对象，字段太多，json解析会有点慢
  * @version 1.0
  */
-class ListUser() : Entity(), Parcelable {
+class ListUser() : Parcelable {
 
     var id: Long = 0
     var nickname: String? = null
     var imagePath: String? = null
     var mobile: String? = null
-    @JSONField(isPassword = true)
     var password: String? = null
     var gradeId: Int = 0
     var relationship: Int = 0

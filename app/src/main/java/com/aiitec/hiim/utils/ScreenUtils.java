@@ -29,6 +29,8 @@ import static android.Manifest.permission.WRITE_SETTINGS;
  */
 public final class ScreenUtils {
 
+    public static DisplayMetrics metric = new DisplayMetrics();
+
     private ScreenUtils() {
         throw new UnsupportedOperationException("u can't instantiate me...");
     }
@@ -218,7 +220,9 @@ public final class ScreenUtils {
         decorView.setDrawingCacheEnabled(true);
         decorView.setWillNotCacheDrawing(false);
         Bitmap bmp = decorView.getDrawingCache();
-        if (bmp == null) return null;
+        if (bmp == null) {
+            return null;
+        }
         DisplayMetrics dm = new DisplayMetrics();
         activity.getWindowManager().getDefaultDisplay().getMetrics(dm);
         Bitmap ret;
@@ -384,5 +388,55 @@ public final class ScreenUtils {
         final DisplayMetrics systemDm = Resources.getSystem().getDisplayMetrics();
         final DisplayMetrics appDm = Utils.getApp().getResources().getDisplayMetrics();
         return systemDm.density != appDm.density;
+    }
+
+    /**
+     * 根据手机的分辨率从 dp 的单位 转成为 px(像素)
+     *
+     * @param context
+     * @param dpValue dp值
+     * @return 像素值
+     */
+    public static int dip2px(Context context, float dpValue) {
+
+        final float scale = getDensity(context);
+        return (int) (dpValue * scale + 0.5f);
+    }
+
+    public static float getDensity(Context context) {
+        WindowManager manager = (WindowManager) context
+                .getSystemService(Context.WINDOW_SERVICE);
+        manager.getDefaultDisplay().getMetrics(metric);
+        return metric.density;
+    }
+
+    /**
+     * 根据手机的分辨率从 px(像素) 的单位 转成为 dp
+     *
+     * @param context
+     * @param pxValue 像素值
+     * @return dp值
+     */
+    public static int px2dip(Context context, float pxValue) {
+
+        final float scale = getDensity(context);
+        return (int) (pxValue / scale + 0.5f);
+    }
+
+    /**
+     * 在view还没有创建出来时测量其宽度和高度（0为宽度，1为高度）
+     *
+     * @param measureView
+     * @return int数组
+     */
+    public static int[] getViewWidthAndHeight(View measureView) {
+        int w = View.MeasureSpec.makeMeasureSpec(0, View.MeasureSpec.UNSPECIFIED);
+        int h = View.MeasureSpec.makeMeasureSpec(0, View.MeasureSpec.UNSPECIFIED);
+        measureView.measure(w, h);
+        int height = measureView.getMeasuredHeight();
+        int width = measureView.getMeasuredWidth();
+        int[] wAndH = {width, height};
+
+        return wAndH;
     }
 }

@@ -3,15 +3,13 @@ package com.aiitec.hiim.im.entity;
 import android.os.Parcel;
 import android.os.Parcelable;
 
-import com.aiitec.openapi.model.Entity;
-
 /**
  * @author ailibin
  * @version 1.0
  * @createTime 2018/1/4.
  */
 
-public class Contact extends Entity implements Parcelable {
+public class Contact implements Parcelable {
 
     /**
      * 显示数据拼音的首字母

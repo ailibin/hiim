@@ -42,5 +42,4 @@ dependencies {
     compile files('libs/qalsdk.jar')
     compile files('libs/soload.jar')
     compile files('libs/mobilepb.jar')
-//    implementation files('libs/open_sdk.jar')
 }

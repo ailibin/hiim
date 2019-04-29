@@ -18,10 +18,6 @@ public class ContentUtil {
      */
     public static String wechatAppId = "wx276fc3faf65dffe8";
     /**
-     *  线上正式版微信支付key
-     */
-//    public static String wechatAppId = "wx276fc3faf65dffe8";
-    /**
      * 应用秘钥
      */
     public static String wechatAppKey = "b9950a15c65125be175e4996538ee8f6";

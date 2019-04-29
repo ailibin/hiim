@@ -281,9 +281,5 @@ public class SplashActivity extends FragmentActivity implements SplashView, TIMC
      * 清楚所有通知栏通知
      */
     private void clearNotification() {
-//        NotificationManager notificationManager = (NotificationManager) this
-//                .getSystemService(NOTIFICATION_SERVICE);
-//        notificationManager.cancelAll();
-//        MiPushClient.clearNotification(getApplicationContext());
     }
 }

@@ -11,20 +11,17 @@ import android.text.TextWatcher
 import android.util.Log
 import android.view.View
 import android.widget.EditText
-import com.aiitec.entitylibary.request.CommentSubmitRequestQuery
 import com.aiitec.hiim.R
 import com.aiitec.hiim.annotation.ContentView
-import com.aiitec.hiim.base.App
 import com.aiitec.hiim.base.BaseKtActivity
 import com.aiitec.hiim.base.Constants
+import com.aiitec.hiim.im.location.util.ToastUtil
+import com.aiitec.hiim.im.utils.AiiUtil
+import com.aiitec.hiim.im.utils.LogUtil
 import com.aiitec.hiim.utils.BaseUtil
 import com.aiitec.hiim.utils.EditTextCharLimitUtil
-import com.aiitec.openapi.model.FileListResponseQuery
-import com.aiitec.openapi.model.ResponseQuery
-import com.aiitec.openapi.net.AIIResponse
-import com.aiitec.openapi.utils.*
+import com.aiitec.hiim.utils.ScreenUtils
 import com.aiitec.widgets.crop.util.UploadPhotoHelper
-import com.aiitec.widgets.dialog.ShareDialog
 import com.aiitec.widgets.pickerview.OptionsPickerView
 import com.aiitec.widgets.pickerview.TimePickerView
 import com.aiitec.widgets.pickerview.model.Region
@@ -54,8 +51,7 @@ class EvaluateCourseActivity : BaseKtActivity() {
     private var allCountyList: ArrayList<ArrayList<ArrayList<Region>>>? = null
     private var selectedRegionId = -1
     //上传的头像图片
-    private var uploadHeaderFile: com.aiitec.openapi.model.File? = null
-    private var shareDialog: ShareDialog? = null
+//    private var uploadHeaderFile: com.aiitec.openapi.model.File? = null
     private var courseId: Long? = null
 
     override fun init(savedInstanceState: Bundle?) {
@@ -66,14 +62,7 @@ class EvaluateCourseActivity : BaseKtActivity() {
         initConfiguration()
         setTextLimitWatchListener(et_evaluate_for_course)
         setListener()
-        initParam()
 
-    }
-
-    private fun initParam() {
-        shareDialog = ShareDialog(this)
-        shareDialog?.setAttributes()
-        shareDialog?.setCancelBottomVisible(false)
     }
 
     private fun initConfiguration() {
@@ -106,7 +95,6 @@ class EvaluateCourseActivity : BaseKtActivity() {
 //                BaseUtil.showToast("点击评论提交")
                 val content = et_evaluate_for_course.text.toString().trim()
                 val rating = br_for_evaluate_course.rating.toInt()
-                requestComment(content, rating)
             }
         }
 
@@ -141,36 +129,6 @@ class EvaluateCourseActivity : BaseKtActivity() {
 
     }
 
-    /**
-     * 评论提交
-     */
-    private fun requestComment(content: String, rating: Int) {
-        val query = CommentSubmitRequestQuery()
-        query.setDir("Course")
-        query.setNamespace("CourseEvaluateSubmit")
-        query.content = content
-        query.starrating = rating
-        query.courseId = courseId
-        App.aiiRequest?.send(query, object : AIIResponse<ResponseQuery>(this, false) {
-            override fun onSuccess(response: ResponseQuery?, index: Int) {
-                super.onSuccess(response, index)
-                BaseUtil.showToast("评论提交成功")
-                //提示足迹页面刷新,不仅仅是足迹页面刷新,还要通知其他免费课程或者付费专栏等刷新
-//                postEvaluateEvent()
-//                val intent = Intent()
-//                setResult(Activity.RESULT_OK, intent)
-//                finish()
-            }
-        })
-    }
-
-//    private fun postEvaluateEvent() {
-//        val event = Event.onEvaluateEvent()
-//        event.tag = Constants.KEY_FOR_EVLUATE
-//        EventBus.getDefault().post(event)
-//        finish()
-//    }
-
 
     //上传身份证件照
     private fun toUploadPic(action: Int) {
@@ -184,39 +142,6 @@ class EvaluateCourseActivity : BaseKtActivity() {
     }
 
 
-    /**
-     * 上传头像
-     */
-    private fun toUploadPicture(pictureUploadMap: HashMap<Int, File>) {
-        val params = LinkedHashMap<String, Any>()
-        params.put("action", "1")
-        progressDialogShow()
-        for (file in pictureUploadMap.values) {
-            params.put(file.name, file)
-        }
-        LogUtil.d("ailibin", "params: " + params.toString())
-        App.aiiRequest?.sendFiles(params, object : AIIResponse<FileListResponseQuery>(this, false) {
-
-            override fun onSuccess(response: FileListResponseQuery, index: Int) {
-                super.onSuccess(response, index)
-                if (response.files != null && response.files.size > 0) {
-                    //这里后台设计有问题,当前用户上传头像,不点击保存就不能设置成功用户头像,应该多加一个设置用户协议
-//                    toSetUserAvatar()
-                    uploadHeaderFile = response.files[0]
-//                    Glide.with(this@EvaluateCourseActivity)
-//                            .load(ImagePathUtil.getWholeImagePath(uploadHeaderFile?.path))
-//                            .into(iv_user_header_picture_for_user_info)
-                }
-            }
-
-            override fun onFinish(index: Int) {
-                super.onFinish(index)
-                progressDialogDismiss()
-            }
-        })
-    }
-
-
     fun screenshot(view: View?): File? {
         if (view == null) {
             return null
@@ -227,8 +152,8 @@ class EvaluateCourseActivity : BaseKtActivity() {
         file?.let {
             LogUtil.e("ailibin", "file--absolutePath: " + it.absolutePath)
             //这里用文件绝对路径,在android7.0以上不行,在android6.0以下是可以,所以还是要设置bitmap到分享中去
-            shareDialog?.setShareContent(it.absolutePath, "")
-            shareDialog?.setShareContent(cacheBitmap, "")
+//            shareDialog?.setShareContent(it.absolutePath, "")
+//            shareDialog?.setShareContent(cacheBitmap, "")
         }
         return file
     }
@@ -275,10 +200,8 @@ class EvaluateCourseActivity : BaseKtActivity() {
         val statusBarHeight = frame.top
         Log.i("TAG", "" + statusBarHeight)
         // 获取屏幕长和高
-        val width = ScreenUtils.getScreenWidth(this)
-        val height = ScreenUtils.getScreenHeight(this)
-        //y+height must be<=bitmap.height()
-//        val b = Bitmap.createBitmap(bitmap, 0, statusBarHeight, width, height - statusBarHeight)
+        val width = ScreenUtils.getScreenWidth()
+        val height = ScreenUtils.getScreenHeight()
         //等比缩放
         val b = Bitmap.createScaledBitmap(bitmap, width, height, true)
         LogUtil.e("ailibin", "bitmap: $b")
@@ -343,7 +266,7 @@ class EvaluateCourseActivity : BaseKtActivity() {
         val pvTime = TimePickerView.Builder(this, TimePickerView.OnTimeSelectListener { date, _ ->
             //选中事件回调
             // 这里回调过来的v,就是show()方法里面所添加的 View 参数，如果show的时候没有添加参数，v则为null
-            tv_select_birthday.text = DateUtil.date2Str(date, "yyyy年MM月dd日")
+//            tv_select_birthday.text = DateUtil.date2Str(date, "yyyy年MM月dd日")
         })
                 //年月日时分秒 的显示与否，不设置则默认全部显示
                 .setType(booleanArrayOf(true, true, true, false, false, false))

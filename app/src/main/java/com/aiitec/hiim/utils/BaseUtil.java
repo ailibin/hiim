@@ -20,7 +20,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.aiitec.openapi.utils.LogUtil;
+import com.aiitec.hiim.im.utils.LogUtil;
 
 import org.json.JSONObject;
 

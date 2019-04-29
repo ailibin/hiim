@@ -23,10 +23,10 @@ import com.aiitec.hiim.annotation.ContentView;
 import com.aiitec.hiim.base.BaseKtActivity;
 import com.aiitec.hiim.im.adapter.PhotoAdapter;
 import com.aiitec.hiim.im.entity.Image;
+import com.aiitec.hiim.im.location.util.ToastUtil;
+import com.aiitec.hiim.im.utils.AiiUtil;
 import com.aiitec.hiim.utils.PermissionsUtils;
-import com.aiitec.openapi.utils.AiiUtil;
-import com.aiitec.openapi.utils.ScreenUtils;
-import com.aiitec.openapi.utils.ToastUtil;
+import com.aiitec.hiim.utils.ScreenUtils;
 
 import org.jetbrains.annotations.Nullable;
 

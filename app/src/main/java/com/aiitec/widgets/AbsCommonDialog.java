@@ -87,11 +87,11 @@ public abstract class AbsCommonDialog extends Dialog {
      * @param view
      */
     protected void findView(View view) {
+
         tv_title = (TextView) view.findViewById(R.id.tv_dialog_title);
         tv_content = (TextView) view.findViewById(R.id.tv_dialog_content);
         tv_dialog_confirm = (TextView) view.findViewById(R.id.tv_dialog_confirm);
         tv_dialog_cancel = (TextView) view.findViewById(R.id.tv_dialog_cancel);
-//        cb_remind = (CheckBox) view.findViewById(R.id.cb_remind);
 
         if (tv_dialog_confirm != null && onConfirmClickListener != null) {
             tv_dialog_confirm.setOnClickListener(onConfirmClickListener);

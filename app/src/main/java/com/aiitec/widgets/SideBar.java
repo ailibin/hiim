@@ -10,7 +10,7 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.widget.TextView;
 
-import com.aiitec.openapi.utils.ScreenUtils;
+import com.aiitec.hiim.utils.ScreenUtils;
 
 import java.util.ArrayList;
 import java.util.List;

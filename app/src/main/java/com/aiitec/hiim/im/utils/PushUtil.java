@@ -17,7 +17,6 @@ import com.aiitec.hiim.im.model.CustomMessage;
 import com.aiitec.hiim.im.model.Message;
 import com.aiitec.hiim.im.model.MessageFactory;
 import com.aiitec.hiim.utils.BaseUtil;
-import com.aiitec.openapi.utils.LogUtil;
 import com.tencent.imsdk.TIMConversationType;
 import com.tencent.imsdk.TIMFriendshipManager;
 import com.tencent.imsdk.TIMGroupReceiveMessageOpt;
@@ -59,18 +58,10 @@ public class PushUtil implements Observer {
     private void PushNotify(final TIMMessage msg) {
         //系统消息，自己发的消息，程序在前台的时候不通知
         /*Foreground.get().isForeground()||*/
-
-        //如果用户设置了不接受消息,那么不能通知了
-//        boolean isReceiveMessage = AiiUtil.getBoolean(App.Companion.getContext(), Constant.CHAT_MESSAGE_REMIND_SETTING, true);
-//        if (!isReceiveMessage) {
-//            return;
-//        }
-
         if (msg == null) {
             return;
         }
-        if (/*msg.getConversation().getType()!= TIMConversationType.Group&&*/
-                msg.getConversation().getType() != TIMConversationType.C2C) {
+        if (msg.getConversation().getType() != TIMConversationType.C2C) {
             return;
         }
         if (msg.isSelf() || msg.getRecvFlag() == TIMGroupReceiveMessageOpt.ReceiveNotNotify ||
@@ -88,7 +79,6 @@ public class PushUtil implements Observer {
         if (BaseUtil.isAllNum(senderStr) || senderStr.startsWith("IM")) {
 
             //那么从存储的地方获取昵称
-//            senderStr = AiiUtil.getString(App.getContext(), "nickname_" + senderStr, senderStr);
             List<String> identifiers = new ArrayList<>();
             identifiers.add(senderStr);
             //users这里表示要获取资料的用户identifier列表

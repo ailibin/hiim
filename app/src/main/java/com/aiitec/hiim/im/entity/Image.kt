@@ -2,16 +2,11 @@ package com.aiitec.hiim.im.entity
 
 import android.os.Parcel
 import android.os.Parcelable
-import com.aiitec.openapi.db.annotation.Unique
-import com.aiitec.openapi.json.annotation.JSONField
-import com.aiitec.openapi.model.Entity
 
 /**
  * Created by ailibin on 2018/1/9.
  */
-class Image(@Unique var id: Long) : Entity(), Parcelable {
-
-    constructor() : this(-1) {}
+class Image() : Parcelable {
 
     /**
      * 文件名
@@ -24,16 +19,14 @@ class Image(@Unique var id: Long) : Entity(), Parcelable {
     /**
      * 与服务器端的链接地址
      */
-    @JSONField(entityName = "path")
     var path: String? = null
 
     var imagePath: String? = null
     var extension: String? = null
     var type = -1
-    @JSONField(notCombination = true)
     var isSelected: Boolean = false
 
-    constructor(parcel: Parcel) : this(parcel.readLong()) {
+    constructor(parcel: Parcel) : this() {
         filename = parcel.readString()
         filePath = parcel.readString()
         path = parcel.readString()
@@ -44,7 +37,6 @@ class Image(@Unique var id: Long) : Entity(), Parcelable {
     }
 
     override fun writeToParcel(parcel: Parcel, flags: Int) {
-        parcel.writeLong(id)
         parcel.writeString(filename)
         parcel.writeString(filePath)
         parcel.writeString(path)

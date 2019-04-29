@@ -6,7 +6,7 @@ import android.os.Build;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 
-import com.aiitec.openapi.utils.ToastUtil;
+import com.aiitec.hiim.im.location.util.ToastUtil;
 
 
 /**

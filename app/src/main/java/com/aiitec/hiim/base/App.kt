@@ -10,27 +10,16 @@ import android.os.Build
 import android.support.annotation.RequiresApi
 import android.support.multidex.MultiDex
 import android.support.v4.app.FragmentActivity
-import android.text.TextUtils
 import android.util.Log
 import com.aiitec.hiim.BuildConfig
 import com.aiitec.hiim.R
+import com.aiitec.hiim.im.utils.LogUtil
 import com.aiitec.hiim.utils.BaseUtil
-import com.aiitec.openapi.constant.CommonKey
-import com.aiitec.openapi.db.AIIDBManager
-import com.aiitec.openapi.net.AIIRequest
-import com.aiitec.openapi.utils.AiiUtil
-import com.aiitec.openapi.utils.LogUtil
-import com.aiitec.openapi.utils.PacketUtil
-import com.meituan.android.walle.WalleChannelReader
-import com.umeng.analytics.MobclickAgent
-import com.umeng.commonsdk.UMConfigure
 import com.umeng.message.IUmengRegisterCallback
 import com.umeng.message.PushAgent
 import com.umeng.message.UmengMessageHandler
 import com.umeng.message.UmengNotificationClickHandler
 import com.umeng.message.entity.UMessage
-import com.umeng.socialize.PlatformConfig
-import com.umeng.socialize.UMShareAPI
 import java.util.*
 import java.util.concurrent.ExecutorService
 import java.util.concurrent.Executors
@@ -44,8 +33,8 @@ class App : Application() {
 
     companion object {
         lateinit var app: App
-        var aiiRequest: AIIRequest? = null
-        var aiidbManager: AIIDBManager? = null
+//        var aiiRequest: AIIRequest? = null
+//        var aiidbManager: AIIDBManager? = null
         var context: Context? = null
         fun getInstance(): App {
             return app
@@ -61,13 +50,12 @@ class App : Application() {
         context = applicationContext
         App.app = this
         cachedThreadPool = Executors.newCachedThreadPool()
-        aiiRequest = AIIRequest(this, Api.API)
-        aiidbManager = AIIDBManager(this, "haiim_db")
+//        aiiRequest = AIIRequest(this, Api.API)
+//        aiidbManager = AIIDBManager(this, "haiim_db")
         LogUtil.showLog = BuildConfig.DEBUG
         //初始化打印工具类
         BaseUtil.init(this)
 //        //屏幕适配
-//        Utils.init(this)
         initParams()
 
     }
@@ -79,7 +67,7 @@ class App : Application() {
         //友盟推送初始化
         initUMPush()
         //友盟分享api初始化
-        UMShareAPI.get(this)
+//        UMShareAPI.get(this)
         //友盟统计分析
         initUMAnalysis()
     }
@@ -89,12 +77,12 @@ class App : Application() {
      *
      */
     private fun initSession() {
-        PacketUtil.session_id = AiiUtil.getString(this, CommonKey.KEY_SESSION)
-        val session = AiiUtil.getString(context, CommonKey.KEY_SESSION)
-        if (TextUtils.isEmpty(session)) {
-            //这里自动获取session_id,不要手动获取,不然会报泛型异常,导致第一次获取不到用户session_id
-            PacketUtil.session_id = null
-        }
+//        PacketUtil.session_id = AiiUtil.getString(this, CommonKey.KEY_SESSION)
+//        val session = AiiUtil.getString(context, CommonKey.KEY_SESSION)
+//        if (TextUtils.isEmpty(session)) {
+//            //这里自动获取session_id,不要手动获取,不然会报泛型异常,导致第一次获取不到用户session_id
+//            PacketUtil.session_id = null
+//        }
     }
 
     private fun initUMPush() {
@@ -104,12 +92,12 @@ class App : Application() {
         mPushAgent.register(object : IUmengRegisterCallback {
             override fun onSuccess(deviceToken: String) {
                 LogUtil.e("ailibin", "umegn_push is register seccuess deviceToken is " + deviceToken)
-                AiiUtil.putString(context, CommonKey.KEY_DEVICETOKEN, deviceToken)
-                val session = AiiUtil.getString(context, CommonKey.KEY_SESSION)
-                if (TextUtils.isEmpty(session)) {
-                    //这里自动获取session_id,不要手动获取,不然会报泛型异常,导致第一次获取不到用户session_id
-                    PacketUtil.session_id = null
-                }
+//                AiiUtil.putString(context, CommonKey.KEY_DEVICETOKEN, deviceToken)
+//                val session = AiiUtil.getString(context, CommonKey.KEY_SESSION)
+//                if (TextUtils.isEmpty(session)) {
+//                    //这里自动获取session_id,不要手动获取,不然会报泛型异常,导致第一次获取不到用户session_id
+//                    PacketUtil.session_id = null
+//                }
             }
 
             override fun onFailure(s: String, s1: String) {
@@ -151,23 +139,6 @@ class App : Application() {
 //                        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
 //                        intent.putExtras(bundle)
 //                        context?.startActivity(intent)
-                    }
-                    2 -> {
-                        //我的钱包
-//                        val intent = Intent(context, MyWalletActivity::class.java)
-//                        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
-//                        context?.startActivity(intent)
-                    }
-                    3 -> {
-                        //我的课程(待评价课程)
-//                        val intent = Intent(context, MainActivity::class.java)
-//                        intent.putExtra("tabHost", 3)
-//                        intent.putExtra("targetId", targetId.toInt())
-//                        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
-//                        context?.startActivity(intent)
-                    }
-                    4 -> {
-
                     }
                 }
             }
@@ -228,22 +199,22 @@ class App : Application() {
     }
 
     private fun initUMShare() {
-        PlatformConfig.setWeixin(getString(R.string.weixinId), getString(R.string.weixinSecret))
-        PlatformConfig.setQQZone(getString(R.string.qq_id), getString(R.string.qq_key))
-        //这里换成新浪微博分享的回调地址.java
-        val callbackUrl = Api.BASE_URL + "/weibo/callback.java"
-//        PlatformConfig.setSinaWeibo(getString(R.string.sina_id), getString(R.string.sina_key), callbackUrl)
-        val channel = WalleChannelReader.getChannel(applicationContext)
-        val pushSecret = getString(R.string.umeng_message_secret)
-        val deviceType = UMConfigure.DEVICE_TYPE_PHONE
-        UMConfigure.init(this, getString(R.string.umeng_key), channel, deviceType, pushSecret)
+//        PlatformConfig.setWeixin(getString(R.string.weixinId), getString(R.string.weixinSecret))
+//        PlatformConfig.setQQZone(getString(R.string.qq_id), getString(R.string.qq_key))
+//        //这里换成新浪微博分享的回调地址.java
+//        val callbackUrl = Api.BASE_URL + "/weibo/callback.java"
+////        PlatformConfig.setSinaWeibo(getString(R.string.sina_id), getString(R.string.sina_key), callbackUrl)
+//        val channel = WalleChannelReader.getChannel(applicationContext)
+//        val pushSecret = getString(R.string.umeng_message_secret)
+//        val deviceType = UMConfigure.DEVICE_TYPE_PHONE
+//        UMConfigure.init(this, getString(R.string.umeng_key), channel, deviceType, pushSecret)
     }
 
     private fun initUMAnalysis() {
         //统计分析配置
-        val channel = WalleChannelReader.getChannel(this.applicationContext, "letar")
-        val config = MobclickAgent.UMAnalyticsConfig(this, resources.getString(R.string.umeng_key), channel)
-        MobclickAgent.startWithConfigure(config)
+//        val channel = WalleChannelReader.getChannel(this.applicationContext, "letar")
+//        val config = MobclickAgent.UMAnalyticsConfig(this, resources.getString(R.string.umeng_key), channel)
+//        MobclickAgent.startWithConfigure(config)
     }
 
 

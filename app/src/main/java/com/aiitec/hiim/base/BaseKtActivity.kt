@@ -17,17 +17,14 @@ import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
 import android.widget.Toast
-import com.aiitec.imlibrary.presentation.business.InitBusiness
-import com.aiitec.imlibrary.tlslibrary.service.TLSService
-import com.aiitec.imlibrary.tlslibrary.service.TlsBusiness
 import com.aiitec.hiim.R
 import com.aiitec.hiim.im.model.UserInfo
 import com.aiitec.hiim.utils.ContentViewUtils
 import com.aiitec.hiim.utils.ScreenUtils
 import com.aiitec.hiim.utils.StatusBarUtil
-import com.aiitec.openapi.cache.AiiFileCache
-import com.aiitec.openapi.constant.AIIConstant
-import com.aiitec.openapi.utils.PacketUtil
+import com.aiitec.imlibrary.presentation.business.InitBusiness
+import com.aiitec.imlibrary.tlslibrary.service.TLSService
+import com.aiitec.imlibrary.tlslibrary.service.TlsBusiness
 import com.aiitec.widgets.CustomProgressDialog
 import com.tencent.imsdk.TIMLogLevel
 import com.umeng.analytics.MobclickAgent
@@ -116,10 +113,6 @@ abstract class BaseKtActivity : AppCompatActivity() {
         tv_title = findViewById<TextView?>(R.id.tv_title)
         toolbar = findViewById<Toolbar?>(R.id.toolbar)
         setToolBar(toolbar)
-
-        //设置状态栏的文字为黑色主题
-//        StatusBarUtil.StatusBarDarkMode(this)
-//        StatusBarUtil.StatusBarLightMode(this)
 
         //标题栏(抽取)
         ll_title_bar = findViewById(R.id.ll_title_bar)
@@ -383,16 +376,16 @@ abstract class BaseKtActivity : AppCompatActivity() {
         UserInfo.getInstance().userSig = TLSService.getInstance().getUserSig(id)
     }
 
-    /**
-     * 更改用户
-     *
-     * @param userId 用户id
-     */
-    fun changeUser(userId: Long) {
-        //更改用户id的时候，需要把缓存路径也更改一下，否则读取缓存有可能读到别人的缓存
-        AIIConstant.USER_ID = userId
-        AiiFileCache.changeDir(PacketUtil.getCacheDir(this))
-    }
+//    /**
+//     * 更改用户
+//     *
+//     * @param userId 用户id
+//     */
+//    fun changeUser(userId: Long) {
+//        //更改用户id的时候，需要把缓存路径也更改一下，否则读取缓存有可能读到别人的缓存
+//        AIIConstant.USER_ID = userId
+//        AiiFileCache.changeDir(PacketUtil.getCacheDir(this))
+//    }
 
     fun switchToActivityForResult(context: Context, clazz: Class<*>,
                                   bundle: Bundle?, requestCode: Int) {

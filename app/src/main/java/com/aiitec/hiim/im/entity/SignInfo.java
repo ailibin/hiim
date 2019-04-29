@@ -14,11 +14,5 @@ public class SignInfo {
 
     public static final int userId = 229;
 
-    //    /**
-//     *  给测试组成员用的账号
-//     */
-//    public static final String signIm ="eJxl0EFPg0AQBeA7v4Jw1Zhd2C3BpIdSNCIQUyESTwS7SzO1XVaYlpbG-26lTSTx-L3Jy5uTYZqmlcXpXblc1juFBR61tMx70yLW7R9qDaIosXAa8Q-lQUMji7JC2Qxoc88mZBwBIRVCBdcAZc4IW-FZDAVXO58y13b4OAKrAZOHxTwMPh6bwH3j*2MaHjDaeYqHVfbkt3X4HHjRuiY68Pp4-YrbGczmeajfVygyn7*onm2*Nggu*rFe5JMkb7HMuxSS-qaLuul0VImwvfyBcjphjFHbHeleNi3U6jKXnCOUeuR3s-Ft-ADKG1yx";
-//
-//    public static final int userId = 143;
 
 }

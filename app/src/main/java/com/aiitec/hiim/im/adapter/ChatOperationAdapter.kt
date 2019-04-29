@@ -9,7 +9,7 @@ import com.aiitec.hiim.R
 import com.aiitec.hiim.adapter.CommonRecyclerViewAdapter
 import com.aiitec.hiim.adapter.CommonRecyclerViewHolder
 import com.aiitec.hiim.im.entity.Item
-import com.aiitec.openapi.utils.ScreenUtils
+import com.aiitec.hiim.utils.ScreenUtils
 
 /**
  * Created by ailibin on 2018/1/9.
@@ -22,11 +22,9 @@ class ChatOperationAdapter(context: Context, data: List<Item>) : CommonRecyclerV
         val tvContent = h?.getView<TextView>(R.id.tv_operation_content)
         val container = h?.getView<LinearLayout>(R.id.ll_item_container)
 
-        val screenWidth = ScreenUtils.getScreenWidth(context as Activity?)
+        val screenWidth = ScreenUtils.getScreenWidth()
         val marginOffset = ScreenUtils.dip2px(context as Activity?, 50f)
         val videoItemsWidthSize = screenWidth - marginOffset
-//        val lp = container?.layoutParams as LinearLayout.LayoutParams
-//        lp.width = videoItemsWidthSize / 4
         container?.layoutParams?.width = videoItemsWidthSize / 4
 
 

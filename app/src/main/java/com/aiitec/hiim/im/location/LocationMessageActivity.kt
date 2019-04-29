@@ -5,7 +5,7 @@ import android.text.TextUtils
 import android.view.View
 import com.aiitec.hiim.annotation.ContentView
 import com.aiitec.hiim.base.BaseKtActivity
-import com.aiitec.openapi.utils.LogUtil
+import com.aiitec.hiim.im.utils.LogUtil
 import com.amap.api.maps2d.AMap
 import com.amap.api.maps2d.AMapOptions
 import com.amap.api.maps2d.SupportMapFragment
@@ -65,9 +65,7 @@ class LocationMessageActivity : BaseKtActivity() {
             aMapFragment = SupportMapFragment.newInstance(aOptions)
             val fragmentTransaction = supportFragmentManager
                     .beginTransaction()
-//            fragmentTransaction.add(android.R.id.content, aMapFragment,
-//                    MAP_FRAGMENT_TAG)
-            fragmentTransaction.add(R.id.flt_map_container, aMapFragment,
+            fragmentTransaction.add(R.id.flt_map_container, aMapFragment!!,
                     MAP_FRAGMENT_TAG)
             fragmentTransaction.commit()
         }

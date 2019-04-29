@@ -4,9 +4,6 @@ import android.content.Context;
 import android.graphics.Bitmap;
 import android.os.Environment;
 
-import com.bumptech.glide.Glide;
-import com.bumptech.glide.request.target.Target;
-
 import java.io.File;
 import java.io.FileOutputStream;
 
@@ -33,11 +30,11 @@ public class SavePictureByGlide implements Runnable {
     public void run() {
         Bitmap bitmap = null;
         try {
-            bitmap = Glide.with(context)
-                    .load(url)
-                    .asBitmap()
-                    .into(Target.SIZE_ORIGINAL, Target.SIZE_ORIGINAL)
-                    .get();
+//            bitmap = Glide.with(context)
+//                    .load(url)
+//                    .asBitmap()
+//                    .into(Target.SIZE_ORIGINAL, Target.SIZE_ORIGINAL)
+//                    .get();
             if (bitmap != null) {
                 // 在这里执行图片保存方法  
                 saveImageToGallery(context, bitmap);

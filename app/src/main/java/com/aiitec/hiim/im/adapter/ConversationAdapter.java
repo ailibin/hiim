@@ -9,9 +9,9 @@ import android.widget.TextView;
 
 import com.aiitec.hiim.R;
 import com.aiitec.hiim.im.model.Conversation;
+import com.aiitec.hiim.im.utils.LogUtil;
 import com.aiitec.hiim.im.utils.TimeUtil;
 import com.aiitec.hiim.utils.GlideImgManager;
-import com.aiitec.openapi.utils.LogUtil;
 import com.daimajia.swipe.SimpleSwipeListener;
 import com.daimajia.swipe.SwipeLayout;
 import com.daimajia.swipe.adapters.BaseSwipeAdapter;
@@ -30,6 +30,8 @@ public class ConversationAdapter extends BaseSwipeAdapter {
     private List<Conversation> datas;
     private Context context;
     private OnDeleteListener onDeleteListener;
+
+    public static final String TAG = "ailibin";
 
     public void setOnDeleteListener(OnDeleteListener onDeleteListener) {
         this.onDeleteListener = onDeleteListener;
@@ -106,74 +108,8 @@ public class ConversationAdapter extends BaseSwipeAdapter {
         //会话类型
         TIMConversationType type = data.getType();
         tvName.setText(name);
-//        if (type == TIMConversationType.C2C) {
-//            //如果是单聊
-//            final String dbName = AiiUtil.getString(context, "nickname_" + data.getIdentify(), name);
-//            if (TextUtils.isEmpty(dbName)) {
-//                //名字为空,从存储的地方获取昵称
-//                tvName.setText(name);
-//            }
-//            //以IM开头的(这里如果是群会话),这个名称显示有问题
-//            if (BaseUtil.isAllNum(dbName) || name.startsWith("IM")) {
-//                List<String> identifiers = new ArrayList<>();
-//                identifiers.add(dbName);
-//                //这里还是请求用户详情
-//                TIMFriendshipManager.getInstance().getUsersProfile(identifiers, new TIMValueCallBack<List<TIMUserProfile>>() {
-//                    @Override
-//                    public void onError(int code, String desc) {
-//                        tvName.setText(dbName);
-//                    }
-//
-//                    @Override
-//                    public void onSuccess(List<TIMUserProfile> result) {
-//                        //这里先设置成昵称吧,然后有的地方昵称有的地方备注,很奇怪
-//                        if (!TextUtils.isEmpty(result.get(0).getNickName())) {
-//                            tvName.setText(result.get(0).getNickName());
-//                        } else {
-//                            tvName.setText(AiiUtil.getString(context, "nickname_" + data.getIdentify(), dbName));
-//                        }
-//                    }
-//                });
-//            } else {
-//                //先设置成昵称(如果后面要改就改过来)
-//                tvName.setText(AiiUtil.getString(context, "nickname_" + data.getIdentify(), name));
-//            }
-//        } else {
-//            //群聊
-//            if (name.startsWith("IM") || TextUtils.isEmpty(name)) {
-//                //获取群identify
-//                String identify = data.getIdentify();
-//                final List<String> newName = new ArrayList<>();
-//                newName.clear();
-//                newName.add(identify);
-//                List<String> groupIdentifys = new ArrayList<>();
-//                groupIdentifys.clear();
-//                groupIdentifys.add(identify);
-//                //需要获取信息的群组 ID 列表
-//                TIMGroupManagerExt.getInstance().getGroupDetailInfo(
-//                        groupIdentifys,
-//                        new TIMValueCallBack<List<TIMGroupDetailInfo>>() {
-//                            @Override
-//                            public void onError(int i, String s) {
-//                                tvName.setText(newName.get(0));
-//                            }
-//
-//                            @Override
-//                            public void onSuccess(List<TIMGroupDetailInfo> timGroupDetailInfos) {
-//                                //这里获取群名称
-//                                if (timGroupDetailInfos != null) {
-//                                    //只有一个群
-//                                    newName.set(0, timGroupDetailInfos.get(0).getGroupName());
-//                                }
-//                                tvName.setText(newName.get(0));
-//                            }
-//                        });
-//            } else {
-//                tvName.setText(name);
-//            }
-//        }
 
-        LogUtil.d("ailibin", "avatar: " + data.getAvatarUrl(context));
+        LogUtil.d(TAG, "avatar: " + data.getAvatarUrl(context));
         GlideImgManager.load(context, data.getAvatarUrl(context), R.drawable.my_icon_default_avatar2x, avatar, GlideImgManager.GlideType.TYPE_CIRCLE);
         lastMessage.setText(data.getLastMessageSummary());
         time.setText(TimeUtil.getTimeStr(data.getLastMessageTime()));

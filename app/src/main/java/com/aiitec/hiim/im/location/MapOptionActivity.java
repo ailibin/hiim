@@ -16,8 +16,6 @@ import com.amap.api.maps2d.model.LatLng;
 public class MapOptionActivity extends FragmentActivity {
 
     private static final String MAP_FRAGMENT_TAG = "map";
-    //    static final CameraPosition LUJIAZUI = new CameraPosition.Builder()
-//            .target(Constants.INSTANCE.getSHANGHAI()).zoom(18).bearing(0).tilt(30).build();
     private AMap aMap;
     private SupportMapFragment aMapFragment;
     private LatLng latLng;

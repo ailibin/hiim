@@ -10,8 +10,8 @@ import android.webkit.*
 import com.aiitec.hiim.R
 import com.aiitec.hiim.annotation.ContentView
 import com.aiitec.hiim.base.BaseKtActivity
+import com.aiitec.hiim.im.utils.LogUtil
 import com.aiitec.hiim.utils.WebViewUtils
-import com.aiitec.openapi.utils.LogUtil
 
 /**
  * @author ailibin(用户登录注册协议和关于我们等界面)

@@ -7,7 +7,6 @@ import android.widget.ImageView;
 import com.aiitec.hiim.R;
 import com.aiitec.hiim.annotation.ContentView;
 import com.aiitec.hiim.base.BaseKtFragment;
-import com.bumptech.glide.Glide;
 import com.github.chrisbanes.photoview.OnPhotoTapListener;
 import com.github.chrisbanes.photoview.PhotoView;
 import com.tencent.imsdk.TIMImage;
@@ -29,8 +28,7 @@ import org.jetbrains.annotations.NotNull;
 public class BigImageFragment extends BaseKtFragment {
 
     private static final String ORIGINAL_IMAGE_URL = "oriImageUrl";
-    PhotoView iv_image;
-    //原图路径
+    private PhotoView iv_image;
     private String oriImageUrl;
 
     public static BigImageFragment newInstance(TIMMessage message) {
@@ -51,7 +49,8 @@ public class BigImageFragment extends BaseKtFragment {
 
     @Override
     protected void init(@NotNull View view) {
-        iv_image = view.findViewById(R.id.iv_image);
+
+//        iv_image = view.findViewById(R.id.iv_image);
         oriImageUrl = getArguments().getString(ORIGINAL_IMAGE_URL);
 
         iv_image.setOnPhotoTapListener(new OnPhotoTapListener() {
@@ -61,11 +60,9 @@ public class BigImageFragment extends BaseKtFragment {
             }
         });
 
-        Glide.with(this)
-                .load(oriImageUrl)
-//                .placeholder(R.drawable.hexagear_default_icon)
-//                .error(R.drawable.hexagear_default_icon)
-                .into(iv_image);
+//        Glide.with(this)
+//                .load(oriImageUrl)
+//                .into(iv_image);
 
     }
 

@@ -9,10 +9,11 @@ import android.widget.ImageView;
 import com.aiitec.hiim.LocationMessageActivity;
 import com.aiitec.hiim.base.App;
 import com.aiitec.hiim.im.adapter.ChatAdapter;
+import com.aiitec.hiim.im.utils.LogUtil;
 import com.aiitec.hiim.utils.GlideRoundTransform;
-import com.aiitec.openapi.utils.LogUtil;
 import com.amap.api.maps2d.model.LatLng;
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.RequestOptions;
 import com.herentan.giftfly.ui.location.entity.Area;
 import com.tencent.imsdk.TIMCustomElem;
 import com.tencent.imsdk.TIMMessage;
@@ -213,17 +214,13 @@ public class CustomMessage extends Message {
 
     private void loadImage(String path, ImageView imageView) {
         if (path.startsWith("http://")) {
-            Glide.with(App.Companion.getContext()).load(path)/*.placeholder(R.drawable.img_default)
-                    .error(R.drawable.img_default)*/
-//                    .override(width, width)
-                    .transform(new GlideRoundTransform(App.Companion.getContext(), 12))
+            Glide.with(App.Companion.getContext()).load(path)
+                    .apply(new RequestOptions().transform(new GlideRoundTransform(App.Companion.getContext(), 12)))
                     .into(imageView);
 
         } else {
-            Glide.with(App.Companion.getContext()).load(new File(path))/*.placeholder(R.drawable.img_default)
-                    .error(R.drawable.img_default)*/
-//                    .override(width, width)
-                    .transform(new GlideRoundTransform(App.Companion.getContext(), 15))
+            Glide.with(App.Companion.getContext()).load(new File(path))
+                    .apply(new RequestOptions().transform(new GlideRoundTransform(App.Companion.getContext(), 12)))
                     .into(imageView);
         }
 

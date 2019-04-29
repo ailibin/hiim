@@ -19,8 +19,11 @@ import com.aiitec.hiim.im.adapter.MemberOperationAdapter
 import com.aiitec.hiim.im.entity.OperationContent
 import com.aiitec.hiim.im.model.*
 import com.aiitec.hiim.im.model.CustomMessage.Type.TYPING
+import com.aiitec.hiim.im.utils.AiiUtil
+import com.aiitec.hiim.im.utils.LogUtil
 import com.aiitec.hiim.im.utils.PushUtil
 import com.aiitec.hiim.utils.BaseUtil
+import com.aiitec.hiim.utils.ScreenUtils
 import com.aiitec.hiim.utils.StatusBarUtil
 import com.aiitec.imlibrary.presentation.presenter.ConversationPresenter
 import com.aiitec.imlibrary.presentation.presenter.FriendshipManagerPresenter
@@ -28,9 +31,6 @@ import com.aiitec.imlibrary.presentation.presenter.GroupManagerPresenter
 import com.aiitec.imlibrary.presentation.viewfeatures.ConversationView
 import com.aiitec.imlibrary.presentation.viewfeatures.FriendshipMessageView
 import com.aiitec.imlibrary.presentation.viewfeatures.GroupManageMessageView
-import com.aiitec.openapi.utils.AiiUtil
-import com.aiitec.openapi.utils.LogUtil
-import com.aiitec.openapi.utils.ScreenUtils
 import com.aiitec.widgets.CommonDialog
 import com.daimajia.swipe.util.Attributes
 import com.tencent.imsdk.TIMConversation

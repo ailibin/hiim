@@ -4,12 +4,8 @@ import android.app.Activity
 import android.content.Context
 import android.content.Intent
 import android.text.TextUtils
-import com.aiitec.hiim.base.Constants
-import com.aiitec.hiim.ui.login.LoginActivity
-import com.aiitec.openapi.utils.LogUtil
-import com.aiitec.openapi.utils.PacketUtil
+import com.aiitec.hiim.im.utils.LogUtil
 import com.aiitec.widgets.CustomProgressDialog
-import com.aiitec.widgets.dialog.ShareDialog
 
 /**
  * Created by ailibin on 2018/2/1.
@@ -17,12 +13,11 @@ import com.aiitec.widgets.dialog.ShareDialog
  */
 open class BaseJavascriptInterface(val context: Context) {
 
-    var shareDialog: ShareDialog? = null
 
     protected var progressDialog: CustomProgressDialog? = null
 
     init {
-        shareDialog = ShareDialog(context)
+//        shareDialog = ShareDialog(context)
         progressDialog = CustomProgressDialog(context)
     }
 
@@ -100,12 +95,13 @@ open class BaseJavascriptInterface(val context: Context) {
      */
     @android.webkit.JavascriptInterface
     open fun getSession(isLoginRequired: Boolean, isRelogin: Boolean): String {
-        if (isRelogin) {
-            context.startActivity(Intent(context, LoginActivity::class.java))
-        } else if (isLoginRequired && Constants.user == null) {
-            context.startActivity(Intent(context, LoginActivity::class.java))
-        }
-        return PacketUtil.session_id
+//        if (isRelogin) {
+//            context.startActivity(Intent(context, LoginActivity::class.java))
+//        } else if (isLoginRequired && Constants.user == null) {
+//            context.startActivity(Intent(context, LoginActivity::class.java))
+//        }
+//        return PacketUtil.session_id
+        return ""
     }
 
     /**捕获异常*/
@@ -160,6 +156,6 @@ open class BaseJavascriptInterface(val context: Context) {
     }
 
     fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        shareDialog?.onActivityResult(requestCode, resultCode, data)
+//        shareDialog?.onActivityResult(requestCode, resultCode, data)
     }
 }

@@ -14,14 +14,10 @@ import com.aiitec.hiim.R
 import com.aiitec.hiim.annotation.ContentView
 import com.aiitec.hiim.base.App
 import com.aiitec.hiim.base.BaseKtActivity
+import com.aiitec.hiim.im.utils.LogUtil
 import com.aiitec.hiim.ui.login.LoginActivity
 import com.aiitec.hiim.utils.BaseUtil
 import com.aiitec.hiim.utils.StatusBarUtil
-import com.aiitec.openapi.model.RequestQuery
-import com.aiitec.openapi.model.ResponseQuery
-import com.aiitec.openapi.net.AIIResponse
-import com.aiitec.openapi.utils.LogUtil
-import com.aiitec.openapi.utils.PacketUtil
 import com.aiitec.widgets.CommonDialog
 import com.umeng.analytics.MobclickAgent
 import kotlinx.android.synthetic.main.activity_webview.*
@@ -88,14 +84,14 @@ class WebViewActivity : BaseKtActivity() {
                     hasLoadFinish = true
                     if (Build.VERSION.SDK_INT < Build.VERSION_CODES.KITKAT) {
                         //android调用js代码
-                        webView.loadUrl("javascript:getSession('" + PacketUtil.session_id + "')")//单引号记得加上
+//                        webView.loadUrl("javascript:getSession('" + PacketUtil.session_id + "')")//单引号记得加上
                     } else {
                         // 因为该方法在 Android 4.4 版本才可使用，所以使用时需进行版本判断
-                        webView.evaluateJavascript("javascript:getSession('" + PacketUtil.session_id + "')", object : ValueCallback<String> {
-                            override fun onReceiveValue(p0: String?) {
-
-                            }
-                        })
+//                        webView.evaluateJavascript("javascript:getSession('" + PacketUtil.session_id + "')", object : ValueCallback<String> {
+//                            override fun onReceiveValue(p0: String?) {
+//
+//                            }
+//                        })
                     }
                 }
             }
@@ -219,23 +215,6 @@ class WebViewActivity : BaseKtActivity() {
      * 请求登出
      */
     private fun requestLogout() {
-        val query = RequestQuery()
-        query.setDir("cis")
-        query.setNamespace("UserLogout")
-        App.aiiRequest?.send(query, object : AIIResponse<ResponseQuery>(this, false) {
-            override fun onSuccess(response: ResponseQuery?, index: Int) {
-                super.onSuccess(response, index)
-                BaseUtil.showToast("退出成功")
-                //友盟统计用户的上线量(这里是下线量)
-                MobclickAgent.onProfileSignOff()
-                switchToActivity(LoginActivity::class.java)
-//                logoutIM()
-            }
-
-            override fun onServiceError(content: String?, status: Int, index: Int) {
-                super.onServiceError(content, status, index)
-            }
-        })
     }
 
     /**

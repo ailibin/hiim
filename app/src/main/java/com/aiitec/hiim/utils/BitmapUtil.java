@@ -3,7 +3,7 @@ package com.aiitec.hiim.utils;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 
-import com.aiitec.openapi.utils.LogUtil;
+import com.aiitec.hiim.im.utils.LogUtil;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
@@ -17,34 +17,6 @@ import java.net.URL;
 
 public class BitmapUtil {
 
-//    private static int mLogoResId = R.drawable.my_icon_default_avatar2x;
-//    private static int mBackgroundResId = R.color.white;
-//
-//    public static Bitmap createBitmap(Activity activity, String qrContent, int logoResId, int backgroundResId) {
-//        if (logoResId > 0) {
-//            mLogoResId = logoResId;
-//        }
-//        if (backgroundResId > 0) {
-//            mBackgroundResId = backgroundResId;
-//        }
-//        Resources res = activity.getResources();
-//        Bitmap logoBitmap = BitmapFactory.decodeResource(res, mLogoResId);
-//        Bitmap qrBg = BitmapFactory.decodeResource(res, mBackgroundResId);
-//        Bitmap bitmap = new QREncode.Builder(activity)
-//                .setColor(activity.getResources().getColor(R.color.black))//二维码颜色
-////                .setColors(0xFF0094FF, 0xFFFED545, 0xFF5ACF00, 0xFFFF4081)//二维码彩色
-//                .setQrBackground(qrBg)//二维码背景
-//                .setMargin(0)//二维码边框
-//                //二维码类型
-//                .setParsedResultType(TextUtils.isEmpty(qrContent) ? ParsedResultType.URI : ParsedResultType.TEXT)
-//                //二维码内容
-//                .setContents(TextUtils.isEmpty(qrContent) ? "https://github.com/mylhyl" : qrContent)
-//                .setSize(500)//二维码等比大小
-////                .setLogoBitmap(logoBitmap, 90)
-//                .build().encodeAsBitmap();
-//
-//        return bitmap;
-//    }
 
     /**
      * 将Bitmap对象转成字节码

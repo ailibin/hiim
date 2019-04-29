@@ -12,7 +12,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 
-import com.aiitec.openapi.utils.LogUtil;
+import com.aiitec.hiim.im.utils.LogUtil;
 import com.aiitec.widgets.crop.UCrop;
 import com.aiitec.widgets.crop.UCropActivity;
 import com.zhy.base.fileprovider.FileProvider7;

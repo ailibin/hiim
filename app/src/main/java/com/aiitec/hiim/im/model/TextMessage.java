@@ -12,12 +12,12 @@ import android.text.style.ImageSpan;
 import android.util.TypedValue;
 import android.view.Gravity;
 
-import com.aiitec.imlibrary.emojicon.EmojiconTextView;
 import com.aiitec.hiim.R;
 import com.aiitec.hiim.base.App;
 import com.aiitec.hiim.im.adapter.ChatAdapter;
 import com.aiitec.hiim.im.utils.EmoticonUtil;
-import com.aiitec.openapi.utils.ScreenUtils;
+import com.aiitec.hiim.utils.ScreenUtils;
+import com.aiitec.imlibrary.emojicon.EmojiconTextView;
 import com.tencent.imsdk.TIMElem;
 import com.tencent.imsdk.TIMElemType;
 import com.tencent.imsdk.TIMFaceElem;

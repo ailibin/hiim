@@ -11,8 +11,8 @@ import com.aiitec.hiim.R
 import com.aiitec.hiim.annotation.ContentView
 import com.aiitec.hiim.base.BaseKtActivity
 import com.aiitec.hiim.base.Constants
+import com.aiitec.hiim.im.utils.AiiUtil
 import com.aiitec.hiim.ui.login.LoginActivity
-import com.aiitec.openapi.utils.AiiUtil
 import kotlinx.android.synthetic.main.activity_guide.*
 
 /**

@@ -15,7 +15,6 @@ import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
 import android.widget.Toast
-import com.aiitec.letar.mvp.mine.IAppPresenter
 import com.aiitec.hiim.R
 import com.aiitec.hiim.utils.ContentViewUtils
 import com.aiitec.hiim.utils.StatusBarUtil
@@ -26,7 +25,7 @@ import java.io.Serializable
 /**
  * Fragment 基类
  */
-abstract class BaseKtFragment : Fragment(), IAppPresenter {
+abstract class BaseKtFragment : Fragment() {
 
     /**
      * 标题栏相关
@@ -344,18 +343,6 @@ abstract class BaseKtFragment : Fragment(), IAppPresenter {
 
     override fun onDestroy() {
         super.onDestroy()
-        getPresenter()?.destroy()
-    }
-
-    //这里不能返回null。。。
-    open fun getPresenter(): IAppPresenter {
-        return this
-    }
-
-    override fun start() {
-    }
-
-    override fun destroy() {
     }
 
 

@@ -14,9 +14,8 @@ import android.view.View.OnClickListener;
 import android.widget.ImageView;
 
 import com.aiitec.hiim.R;
+import com.aiitec.hiim.im.utils.LogUtil;
 import com.aiitec.hiim.model.Ad;
-import com.aiitec.hiim.utils.GlideImgManager;
-import com.aiitec.openapi.utils.LogUtil;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -75,8 +74,7 @@ public class BannerAdapter extends PagerAdapter {
         String adImg = list.get(arg1).getImagePath();
 
         LogUtil.e("ailibin", "adImg: " + adImg.toString());
-        GlideImgManager.load(context, adImg).placeholder(R.color.gray7).centerCrop().into(holder.getImageView());
-//        GlideImgManager.loadImgToBackground(context, adImg, R.color.gray7, holder.getImageView());
+//        GlideImgManager.load(context, adImg).placeholder(R.color.gray7).centerCrop().into(holder.getImageView());
 
 
         /**    监听点击广告图片后的操作，一般只做网页跳转	*/

@@ -2,13 +2,12 @@ package com.herentan.giftfly.ui.location.entity
 
 import android.os.Parcel
 import android.os.Parcelable
-import com.aiitec.openapi.model.Entity
 
 /**
  * Created by ailibin on 2018/1/30.
  * 位置经纬度坐标点
  */
-class LatLon() : Entity(), Parcelable {
+class LatLon() : Parcelable {
 
     /**
      * 纬度坐标点

@@ -6,7 +6,7 @@ import android.text.SpannableStringBuilder;
 import android.text.style.ForegroundColorSpan;
 import android.util.AttributeSet;
 
-import com.aiitec.openapi.utils.LogUtil;
+import com.aiitec.hiim.im.utils.LogUtil;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -28,7 +28,8 @@ public class MyTextView extends android.support.v7.widget.AppCompatTextView {
         List<Integer> sTextsStartList = new ArrayList<>();
         int sTextLength = specifiedTexts.length();
         String temp = text;
-        int lengthFront = 0;//记录被找出后前面的字段的长度
+        //记录被找出后前面的字段的长度
+        int lengthFront = 0;
         int start = -1;
         do {
             //specifiedTexts的内容为空的话进来搜索就会报异常,所以必须保证specifiedTexts的内容不为空才能调setSpecifiedTextsColor()这个方法

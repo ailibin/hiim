@@ -6,7 +6,6 @@ import android.support.v4.content.ContextCompat
 import android.support.v7.widget.LinearLayoutManager
 import android.view.View
 import android.widget.TextView
-import com.aiitec.imlibrary.presentation.presenter.FriendshipManagerPresenter
 import com.aiitec.hiim.Event
 import com.aiitec.hiim.R
 import com.aiitec.hiim.adapter.CommonRecyclerViewAdapter
@@ -14,7 +13,8 @@ import com.aiitec.hiim.annotation.ContentView
 import com.aiitec.hiim.base.BaseKtActivity
 import com.aiitec.hiim.im.adapter.NewFriendAdapter
 import com.aiitec.hiim.im.entity.ListUser
-import com.aiitec.openapi.utils.LogUtil
+import com.aiitec.hiim.im.utils.LogUtil
+import com.aiitec.imlibrary.presentation.presenter.FriendshipManagerPresenter
 import kotlinx.android.synthetic.main.activity_new_fiend.*
 import org.greenrobot.eventbus.EventBus
 import org.greenrobot.eventbus.Subscribe
@@ -37,7 +37,6 @@ class NewFriendActivity : BaseKtActivity(){
         setColumnTitle("新的朋友")
         setRightBtnVisible(true)
         setRightBtnText("添加朋友", ContextCompat.getColor(this, R.color.white))
-//        friendshipPresenter = FriendshipManagerPresenter(this)
         swipeRefreshLayout.setColorSchemeResources(R.color.colorAccent, R.color.colorPrimaryDark)
         swipeRefreshLayout.setOnRefreshListener {
             requestUserList(true)
@@ -72,20 +71,6 @@ class NewFriendActivity : BaseKtActivity(){
         //点击每个条目
         newFriendAdapter?.setOnViewInItemClickListener(CommonRecyclerViewAdapter.OnViewInItemClickListener { v, position ->
 
-            //            var id = newFriendDatas[position].id
-//            val name = newFriendDatas[position].nickname
-//            if (v.id == R.id.avatar) {
-//                val bundle = Bundle()
-//                bundle.putString(UserDetailActivity.ARG_NICKNAME, name)
-//                //这里需要加上前缀,不然无法聊天(id不正确)
-//                bundle.putString(UserDetailActivity.ARG_IDENTIFY, Constants.IM_PREFIX + id.toString())
-//                bundle.putLong(UserDetailActivity.PARAM_ID, id)
-//                switchToActivityForResult(UserDetailActivity::class.java, bundle, 1)
-//            } else if (v.id == R.id.status) {
-//                requestAddFriend(position, id, newFriendDatas[position].relationship)
-//                LogUtil.d("ailibin", "relationship: " + newFriendDatas[position].relationship)
-//            }
-
         }, R.id.avatar, R.id.status)
     }
 
@@ -94,37 +79,6 @@ class NewFriendActivity : BaseKtActivity(){
      * 请求好友列表(1全部；2通讯录（我的好友）；3新的朋友；4黑名单)
      */
     private fun requestUserList(isPullRefresh: Boolean) {
-//        val query = ListRequestQuery()
-//        query.setNamespace("UserList")
-//        query.action = AIIAction.THREE
-//        query.setDir("sns")
-//        val table = query.table
-//        table.limit = 1000
-//        if (!isPullRefresh) {
-//            customDialogShow()
-//        }
-//        App.aiiRequest?.send(query, object : AIIResponse<UserListResponseQuery>(this, false) {
-//            override fun onSuccess(response: UserListResponseQuery, index: Int) {
-//                super.onSuccess(response, index)
-//                if (response.users != null) {
-//                    getUserList(response.users)
-//                }
-////                LogUtil.d("ailibin", "newFriend: user" + response.users.toString())
-//            }
-//
-//            override fun onCache(content: UserListResponseQuery, index: Int) {
-//                super.onCache(content, index)
-//                if (content.users != null) {
-//                    getUserList(content.users)
-//                }
-//            }
-//
-//            override fun onFinish(index: Int) {
-//                super.onFinish(index)
-//                swipeRefreshLayout.isRefreshing = false
-//                customDialogDismiss()
-//            }
-//        })
     }
 
     private fun requestAddFriend(position: Int, id: Long, relationship: Int) {
@@ -166,10 +120,6 @@ class NewFriendActivity : BaseKtActivity(){
      */
     @Subscribe(threadMode = ThreadMode.MAIN)
     fun acceptNewFriend(event: Event.OnReceiveFriendEvent) {
-//        if (event.tag == Constant.ON_RECEIVE_FRIEND_KEY) {
-//            //对方接受之后,当前用户好友列表界面需要刷新
-//            requestUserList(false)
-//        }
     }
 
     /**
@@ -177,10 +127,6 @@ class NewFriendActivity : BaseKtActivity(){
      */
     @Subscribe(threadMode = ThreadMode.MAIN)
     fun postInvite(event: Event.OnPostInviteEvent) {
-//        if (event.tag == Constant.ON_POST_INVITE_KEY) {
-//            //对方接受之后,当前用户好友列表界面需要刷新
-//            requestUserList(false)
-//        }
     }
 
     private fun getUserList(users: List<ListUser>?) {

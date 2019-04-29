@@ -15,13 +15,12 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.aiitec.hiim.R;
-import com.aiitec.hiim.base.Constants;
 import com.aiitec.hiim.im.model.CustomMessage;
 import com.aiitec.hiim.im.model.Message;
+import com.aiitec.hiim.im.utils.AiiUtil;
+import com.aiitec.hiim.im.utils.LogUtil;
 import com.aiitec.hiim.utils.GlideImgManager;
-import com.aiitec.openapi.utils.AiiUtil;
-import com.aiitec.openapi.utils.LogUtil;
-import com.aiitec.openapi.utils.ScreenUtils;
+import com.aiitec.hiim.utils.ScreenUtils;
 import com.tencent.imsdk.TIMConversationType;
 import com.tencent.imsdk.TIMElemType;
 import com.tencent.imsdk.TIMSoundElem;
@@ -49,11 +48,6 @@ public class ChatAdapter extends ArrayAdapter<Message> {
     private TIMConversationType type;
     private boolean mIsShowEmpty = false;
     private List<String> mEmptyList = new ArrayList<>();
-    //    private TeamEmptyAdapter teamEmptyAdapter;
-    private View itemLayoutLocationLeft;
-    private View itemLayoutLocationRight;
-    private View itemLayoutGiftLeft;
-    private View itemLayoutGiftRight;
 
     public void setOtherAvatar(String otherAvatar) {
         this.otherAvatar = otherAvatar;
@@ -158,9 +152,9 @@ public class ChatAdapter extends ArrayAdapter<Message> {
                 bubbleView = viewHolder.rightMessage;
                 tv_duration = viewHolder.tv_right_duration;
                 String imagePath = "";
-                if (Constants.INSTANCE.getUser() != null) {
-                    imagePath = Constants.INSTANCE.getUser().getImagePath();
-                }
+//                if (Constants.INSTANCE.getUser() != null) {
+//                    imagePath = Constants.INSTANCE.getUser().getImagePath();
+//                }
                 GlideImgManager.load(getContext(), imagePath, R.drawable.my_icon_default_avatar2x, viewHolder.rightAvatar, GlideImgManager.GlideType.TYPE_CIRCLE);
             } else {
                 if (data instanceof CustomMessage) {

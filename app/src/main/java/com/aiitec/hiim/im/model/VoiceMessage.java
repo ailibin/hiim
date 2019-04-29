@@ -13,9 +13,9 @@ import com.aiitec.hiim.base.App;
 import com.aiitec.hiim.im.adapter.ChatAdapter;
 import com.aiitec.hiim.im.chat.ChatActivity;
 import com.aiitec.hiim.im.utils.FileUtil;
+import com.aiitec.hiim.im.utils.LogUtil;
 import com.aiitec.hiim.im.utils.MediaUtil;
-import com.aiitec.openapi.utils.LogUtil;
-import com.aiitec.openapi.utils.ScreenUtils;
+import com.aiitec.hiim.utils.ScreenUtils;
 import com.tencent.imsdk.TIMCallBack;
 import com.tencent.imsdk.TIMMessage;
 import com.tencent.imsdk.TIMSoundElem;
@@ -102,7 +102,6 @@ public class VoiceMessage extends Message {
                 LogUtil.d("ailibin", "isUnRead: "+isRead);
                 viewHolder.voiceUnread.setVisibility(View.VISIBLE);
             }
-//            viewHolder.voiceUnread.setVisibility(View.GONE);
         }
 
         int bubbleWidth = 0;

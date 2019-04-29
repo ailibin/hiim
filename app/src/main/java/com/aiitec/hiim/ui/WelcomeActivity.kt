@@ -4,9 +4,7 @@ import android.os.Bundle
 import android.os.Handler
 import com.aiitec.hiim.base.BaseKtActivity
 import com.aiitec.hiim.base.Constants
-import com.aiitec.hiim.ui.login.LoginActivity
-import com.aiitec.openapi.constant.AIIConstant
-import com.aiitec.openapi.utils.AiiUtil
+import com.aiitec.hiim.im.utils.AiiUtil
 
 /**
  * 启动页
@@ -31,11 +29,11 @@ class WelcomeActivity : BaseKtActivity() {
             if(isFirstLaunch){
                 switchToActivity(GuideActivity::class.java)
             } else {
-                if(AIIConstant.USER_ID > 0){
-                    switchToActivity(MainActivity::class.java)
-                } else {
-                    switchToActivity(LoginActivity::class.java)
-                }
+//                if(AIIConstant.USER_ID > 0){
+//                    switchToActivity(MainActivity::class.java)
+//                } else {
+//                    switchToActivity(LoginActivity::class.java)
+//                }
             }
             finish()
         }, 1000)

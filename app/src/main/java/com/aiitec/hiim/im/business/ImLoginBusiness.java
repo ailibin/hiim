@@ -4,6 +4,18 @@ import android.content.Context;
 import android.content.Intent;
 import android.widget.Toast;
 
+import com.aiitec.hiim.R;
+import com.aiitec.hiim.base.App;
+import com.aiitec.hiim.im.location.util.ToastUtil;
+import com.aiitec.hiim.im.model.FriendshipInfo;
+import com.aiitec.hiim.im.model.GroupInfo;
+import com.aiitec.hiim.im.model.UserInfo;
+import com.aiitec.hiim.im.utils.AiiUtil;
+import com.aiitec.hiim.im.utils.LogUtil;
+import com.aiitec.hiim.im.utils.PushUtil;
+import com.aiitec.hiim.ui.MainActivity;
+import com.aiitec.hiim.ui.login.LoginActivity;
+import com.aiitec.hiim.utils.BaseUtil;
 import com.aiitec.imlibrary.presentation.business.LoginBusiness;
 import com.aiitec.imlibrary.presentation.event.FriendshipEvent;
 import com.aiitec.imlibrary.presentation.event.GroupEvent;
@@ -11,19 +23,6 @@ import com.aiitec.imlibrary.presentation.event.MessageEvent;
 import com.aiitec.imlibrary.presentation.event.RefreshEvent;
 import com.aiitec.imlibrary.presentation.presenter.FriendshipManagerPresenter;
 import com.aiitec.imlibrary.tlslibrary.service.TlsBusiness;
-import com.aiitec.hiim.R;
-import com.aiitec.hiim.base.App;
-import com.aiitec.hiim.base.Constants;
-import com.aiitec.hiim.im.model.FriendshipInfo;
-import com.aiitec.hiim.im.model.GroupInfo;
-import com.aiitec.hiim.im.model.UserInfo;
-import com.aiitec.hiim.im.utils.PushUtil;
-import com.aiitec.hiim.ui.MainActivity;
-import com.aiitec.hiim.ui.login.LoginActivity;
-import com.aiitec.hiim.utils.BaseUtil;
-import com.aiitec.openapi.utils.AiiUtil;
-import com.aiitec.openapi.utils.LogUtil;
-import com.aiitec.openapi.utils.ToastUtil;
 import com.tencent.imsdk.TIMCallBack;
 import com.tencent.imsdk.TIMConnListener;
 import com.tencent.imsdk.TIMFriendAllowType;
@@ -109,9 +108,6 @@ public class ImLoginBusiness {
 //                        这里跳转到h5首页
                         Intent intent = new Intent(context, MainActivity.class);
                         context.startActivity(intent);
-//                        if (listener != null) {
-//                            listener.onImLoginSuccess();
-//                        }
                     }
                 });
 
@@ -122,7 +118,7 @@ public class ImLoginBusiness {
             @Override
             public void onForceOffline() {
                 AiiUtil.putString(context, "user", null);
-                Constants.INSTANCE.setUser(null);
+//                Constants.INSTANCE.setUser(null);
                 BaseUtil.showToast("您的用户在别处登录，请重新登录");
                 if (context != null) {
                     context.startActivity(new Intent(context, LoginActivity.class));
@@ -135,7 +131,7 @@ public class ImLoginBusiness {
             @Override
             public void onUserSigExpired() {
                 LogUtil.d("onUserSigExpired ");
-                Constants.INSTANCE.setUser(null);
+//                Constants.INSTANCE.setUser(null);
                 AiiUtil.putString(context, "user", null);
                 //票据过期，需要重新登录
                 BaseUtil.showToast("票据过期,请重新登录");

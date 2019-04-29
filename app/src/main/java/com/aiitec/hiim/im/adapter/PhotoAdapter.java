@@ -10,7 +10,7 @@ import com.aiitec.hiim.adapter.CommonRecyclerViewAdapter;
 import com.aiitec.hiim.adapter.CommonRecyclerViewHolder;
 import com.aiitec.hiim.im.entity.Image;
 import com.aiitec.hiim.utils.GlideImgManager;
-import com.aiitec.openapi.utils.ScreenUtils;
+import com.aiitec.hiim.utils.ScreenUtils;
 
 import java.io.File;
 import java.util.List;
@@ -36,7 +36,7 @@ public class PhotoAdapter extends CommonRecyclerViewAdapter<Image> {
 
     public PhotoAdapter(final Context context, List<Image> datas) {
         super(context, datas);
-        width = ScreenUtils.getScreenWidth(context) / 3 - ScreenUtils.dip2px(context, 9);
+        width = ScreenUtils.getScreenWidth() / 3 - ScreenUtils.dip2px(context, 9);
 
     }
 
